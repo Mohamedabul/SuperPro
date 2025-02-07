@@ -3,8 +3,7 @@ from flask_cors import CORS
 import pandas as pd
 import os
 from werkzeug.utils import secure_filename
-from delimiter import DelimiterAnalyzer
-from location import check_region_location_mismatch
+
 
 app = Flask(__name__)
 CORS(app)
@@ -27,11 +26,6 @@ def analyze_file(file_path):
             df = pd.read_csv(file_path)
         else:
             df = pd.read_excel(file_path)
-        delimiter_analyzer = DelimiterAnalyzer()
-        delimiter_results = delimiter_analyzer.analyze_file(file_path)
-
-        # Add location mismatch analysis
-        location_mismatches = check_region_location_mismatch(df)
         
         # Get missing value positions and TBD positions
         missing_positions = {}
@@ -104,9 +98,7 @@ def analyze_file(file_path):
                 'percentage': float(total_duplicate_rows / len(df) * 100),
                 'indices': duplicate_row_indices
             },
-            'data': df.fillna('').to_dict('records'),
-            'delimiter_analysis': delimiter_results,
-            'location_mismatches': location_mismatches
+            'data': df.fillna('').to_dict('records')
         }
         return analysis, None
     except Exception as e:
