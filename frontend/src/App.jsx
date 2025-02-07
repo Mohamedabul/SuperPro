@@ -21,7 +21,8 @@ import {
   CloudUpload as CloudUploadIcon,
   Assessment as AssessmentIcon,
   TableChart as TableChartIcon,
-  GridOn as GridOnIcon
+  GridOn as GridOnIcon,
+  FileDownload as FileDownloadIcon
 } from '@mui/icons-material'
 import axios from 'axios'
 
@@ -39,6 +40,42 @@ function App() {
     setFile(selectedFile)
     setError(null)
   }
+  const handleExport = () => {
+    const headers = analysis.columns
+    const rows = getGridRows()
+    
+    let csvContent = headers.join(',') + '\n'
+    
+    rows.forEach(row => {
+      const rowData = headers.map(column => {
+        const value = row[column] || ''
+        const isMissing = analysis.missing_positions[column].includes(row.id - 1)
+        const isTBD = analysis.tbd_positions[column].includes(row.id - 1)
+        const hasDelimiter = analysis.delimiter_analysis[column]?.includes(row.id - 1)
+        const hasLocationMismatch = column === 'Regional' && analysis.location_mismatches?.includes(row.id - 1)
+        const isDuplicate = analysis.duplicate_rows.indices.includes(row.id - 1)
+        
+        let cellValue = value
+        if (hasLocationMismatch) cellValue = `[LM]${value}`
+        else if (hasDelimiter) cellValue = `[D]${value}`
+        else if (isTBD || isMissing) cellValue = `[M]${value}`
+        
+        return cellValue
+      }).join(',')
+      csvContent += rowData + '\n'
+    })
+  
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
+    const link = document.createElement('a')
+    const url = URL.createObjectURL(blob)
+    link.setAttribute('href', url)
+    link.setAttribute('download', 'data_export.csv')
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+  
+  
 
   const handleUpload = async () => {
     if (!file) {
@@ -73,10 +110,16 @@ function App() {
       headerName: column,
       flex: 1,
       minWidth: 150,
+      maxWidth: 300,
+      resizable: true,
+      headerClassName: 'bold-header',
       renderCell: (params) => {
         const isMissing = analysis.missing_positions[column].includes(params.row.id - 1)
         const isTBD = analysis.tbd_positions[column].includes(params.row.id - 1)
-        const value = params.value || '—'
+        const isDuplicate = analysis.duplicate_rows.indices.includes(params.row.id - 1)
+        const hasDelimiter = analysis.delimiter_analysis[column]?.includes(params.row.id - 1)
+        const hasLocationMismatch = column === 'Regional' && analysis.location_mismatches?.includes(params.row.id - 1)
+        const value = params.value || ' '
         
         return (
           <Box
@@ -84,15 +127,27 @@ function App() {
               width: '100%',
               height: '100%',
               display: 'flex',
-              alignItems: 'center',
-              backgroundColor: isTBD 
-                ? 'rgba(255, 165, 0, 0.1)'  // Orange background for TBD
-                : isMissing 
-                  ? 'rgba(255, 0, 0, 0.1)'   // Red background for missing
-                  : 'transparent',
+              alignItems: 'flex-start',
+              justifyContent: 'space-between',
+              // flexWrap: 'wrap',
+              boxSizing: 'border-box',
+              gap: 0,
+              backgroundColor: hasLocationMismatch
+                ? 'rgba(255, 0, 0, 0.1)'   
+                : hasDelimiter
+                  ? 'rgba(0, 128, 0, 0.1)'   
+                  : isTBD 
+                    ? 'rgba(255, 165, 0, 0.1)'  
+                    : isMissing 
+                      ? 'rgba(255, 165, 0, 0.1)'  
+                      : 'transparent',
               color: isTBD ? 'orange' : 'inherit',
               fontStyle: isTBD ? 'italic' : 'normal',
-              p: 1
+              p: 1,
+              whiteSpace: 'normal',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              minWidth: 0
             }}
           >
             {value}
@@ -101,6 +156,7 @@ function App() {
       }
     }))
   }
+
 
   const getGridRows = () => {
     if (!analysis || !analysis.data) return []
@@ -253,7 +309,7 @@ function App() {
                     {activeTab === 0 ? (
                       <CardContent>
                         <Grid container spacing={2} sx={{ mb: 3 }}>
-                          <Grid item xs={12} sm={6}>
+                          <Grid item xs={12} sm={6} md={4}>
                             <Card variant="outlined">
                               <CardContent>
                                 <Typography variant="h6" color="primary" gutterBottom>
@@ -265,7 +321,7 @@ function App() {
                               </CardContent>
                             </Card>
                           </Grid>
-                          <Grid item xs={12} sm={6}>
+                          <Grid item xs={12} sm={6} md={4}>
                             <Card variant="outlined">
                               <CardContent>
                                 <Typography variant="h6" color="primary" gutterBottom>
@@ -277,10 +333,25 @@ function App() {
                               </CardContent>
                             </Card>
                           </Grid>
+                          <Grid item xs={12} sm={6} md={4}>
+                            <Card variant="outlined">
+                              <CardContent>
+                                <Typography variant="h6" color="primary" gutterBottom>
+                                  Duplicate Rows
+                                </Typography>
+                                <Typography variant="h4">
+                                  {analysis.duplicate_rows.total}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                  {analysis.duplicate_rows.percentage.toFixed(1)}% of total rows
+                                </Typography>
+                              </CardContent>
+                            </Card>
+                          </Grid>
                         </Grid>
 
                         <Typography variant="h6" gutterBottom sx={{ mt: 4, mb: 2 }}>
-                          Missing Values Analysis
+                          Column Analysis
                         </Typography>
                         
                         <Box sx={{ width: '100%', overflow: 'auto' }}>
@@ -303,6 +374,7 @@ function App() {
                                         Type: {analysis.data_types[column]}
                                       </Typography>
                                     </Box>
+                                    
                                     <Box sx={{ mb: 2 }}>
                                       <Typography variant="body2" color="text.secondary" gutterBottom>
                                         Missing Values:
@@ -324,6 +396,7 @@ function App() {
                                         </Typography>
                                       </Box>
                                     </Box>
+                                    
                                     <Box>
                                       <Typography variant="body2" color="text.secondary" gutterBottom>
                                         TBD Values:
@@ -353,7 +426,35 @@ function App() {
                         </Box>
                       </CardContent>
                     ) : (
-                      <Box sx={{ height: 600, width: '100%', p: 2 }}>
+                      <Box sx={{ height: 1000, width: '100%', p: 2 }}>
+                        <Box sx={{ mb: 2, display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                              <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(255, 0, 0, 0.1)' }} />
+                              <Typography variant="body2"><b>Location Mismatch</b></Typography>
+                            </Box>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                              <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(0, 128, 0, 0.1)' }} />
+                              <Typography variant="body2"><b>Delimiter Found</b></Typography>
+                            </Box>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                              <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(255, 165, 0, 0.1)' }} />
+                              <Typography variant="body2"><b>Missing/TBD Value</b></Typography>
+                            </Box>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                              <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(255, 0, 255, 0.1)' }} />
+                              <Typography variant="body2"><b>Duplicate Row</b></Typography>
+                            </Box>
+                            {/* <Button
+                              variant="contained"
+                              color="primary"
+                              onClick={handleExport}
+                              startIcon={<FileDownloadIcon />}
+                              disabled={!analysis}
+                            >
+                              Export Data
+                            </Button> */}
+                          </Box>
+
                         <DataGrid
                           rows={getGridRows()}
                           columns={getGridColumns()}
@@ -361,11 +462,22 @@ function App() {
                           rowsPerPageOptions={[10, 25, 50, 100]}
                           disableSelectionOnClick
                           density="comfortable"
+                          getRowClassName={(params) => {
+                            const isDuplicate = analysis.duplicate_rows.indices.includes(params.row.id - 1)
+                            return isDuplicate ? 'duplicate-row' : ''
+                          }}
                           sx={{
                             '& .MuiDataGrid-cell': {
                               padding: 0
+                            },
+                            '& .duplicate-row': {
+                              backgroundColor: 'rgba(255, 0, 255, 0.1)',  
+                              '&:hover': {
+                                backgroundColor: 'rgba(255, 0, 255, 0.2)',  
+                              }
                             }
                           }}
+                          
                         />
                       </Box>
                     )}
