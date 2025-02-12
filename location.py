@@ -7,10 +7,14 @@ MODEL_405B = "Meta-Llama-3.3-70B-Instruct"
 API_KEY = "f2321685-3794-4924-91dd-a0d9ee7c365b"
 
 def extract_column_names(llm_response):
-    location_col = llm_response.split('location_column:')[1].split(',')[0].strip()
-    regional_col = llm_response.split('regional_column:')[1].strip()
-    return location_col, regional_col
-
+    try:
+        location_col = llm_response.split('location_column:')[1].split(',')[0].strip()
+        regional_col = llm_response.split('regional_column:')[1].strip()
+        return location_col, regional_col
+    except (IndexError, AttributeError):
+        st.error("Failed to extract column names from LLM response")
+        return None, None
+   
 def analyze_columns_with_llm(df):
     headers = {
         "Authorization": f"Bearer {API_KEY}",
@@ -35,9 +39,7 @@ def analyze_columns_with_llm(df):
         "model": MODEL_405B,
         "max_tokens": 4000,
         "temperature": 0.1,
-        "top_p": 0.1,
-        "presence_penalty": 0.1,
-        "frequency_penalty": 0.1
+        "top_p": 0.1
     }
 
     try:
@@ -54,24 +56,20 @@ def check_region_location_mismatch(df, location_column, regional_column):
     }
 
     prompt = f"""
-    You are an expert in data validation for region and location mismatches. You are given a dataset with two columns, one is business location and the other is regional. You have to compare the location and regional columns and identify whether the regional column is correct with respect to the location column.
+    You are an expert in data validation for business location. You are given a dataset with two columns, one is business location and the other is regional. You have to check whether all the locatins given in the location column are name of countries or Worldwide, no regions like APAC, EMEA , etc should be present in the location column.
 
     Your task is to identify ALL mismatches based on these **strict rules**:
 
     ### **Matching Rules:**
-    1. If business location column contains **only EMEA countries**, then regional must only be 'EMEA'.
-    2. If business location column contains **only APAC countries**, then regional must only be 'APAC'.
-    3. If business location column contains **both APAC and EMEA countries**, then regional must be 'APAC/EMEA'.
-    4. If business location is Worldwide or contains multiple regions, then regional **must** be Global.
-    5. If regional contains 'APAC/EMEA' but the location is only APAC or EMEA, then it is a mismatch.
-    6. If location contains both countries of "APAC and EMEA" but the location is only 'APAC' or 'EMEA', then it is a mismatch.
-    7. The location column should not have any business locations like 'EMEA' or 'APAC'.
-    8. If location is worldwide, regional must be global (Not "Global/APAC" and "Global/EMEA").
-    9. You **must not** consider blanks in regional as a mismatch, only if location and regional is filled then take it for the comparision, if regional is empty then skip the comparision.
-    10. If location is worldwide and regional is global then it is **not a mismatch**.
+    1. Location column should have only country names or Worldwide else it should be highlighted.
+
+    **Analyze in depth, and you have to find the maximum number of mismatches.**
+
+    Analyze this data:
+    {df[[location_column]].to_string()}
 
     Output Format:
-    Regional : [Row Index]
+    Location : [Index of all the rows that do have regions like EMEA/APAC in the location column instead of country name or worldwide]
     **Only display the tables, no additional text.**
     """
 
@@ -80,8 +78,8 @@ def check_region_location_mismatch(df, location_column, regional_column):
 
     payload = {
         "messages": [
-            {"role": "system", "content": "You are an expert in data validation for region and location mismatches."},
-            {"role": "user", "content": f"{prompt}\n\nData:\n{df[[location_column, regional_column]].to_string()}"}
+            {"role": "system", "content": "You are an expert in data validation for business location and it's region mismatches."},
+            {"role": "user", "content": f"{prompt}"}
         ],
         "model": MODEL_405B,
         "max_tokens": 4000,
@@ -90,12 +88,14 @@ def check_region_location_mismatch(df, location_column, regional_column):
         "presence_penalty": 0.1,
         "frequency_penalty": 0.1
     }
+
     try:
         response = requests.post(f"{API_BASE}/chat/completions", headers=headers, json=payload)
         response.raise_for_status()
         return response.json()['choices'][0]['message']['content']
     except (requests.exceptions.RequestException, KeyError) as e:
         return None
+
 def main():
     st.title("File Upload & Location Analysis")
    
@@ -121,5 +121,6 @@ def main():
         if mismatches:
             st.write("Mismatches Found:")
             st.write(mismatches)
+
 if __name__ == "__main__":
     main()
