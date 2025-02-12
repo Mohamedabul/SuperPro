@@ -1,14 +1,9 @@
 Application,Supports,No.of.Users,Software Owner,IT Owner,Application Business Domain,Existing Sub Domain,Application Type,Locations,Regional
 CRM Plus,"Sales Operations, Marketing, Customer Service",2500,Salesforce,John Smith,Customer Management,Sales & Marketing,Commercial Off-The-Shelf,"New York, London, Singapore",Global
 HR Portal,Human Resources,1200,Internal,Sarah Johnson,Employee Management,HR Operations,Custom Developed,"Mumbai, Bangkok, Singapore",APAC
-Finance Pro,"Finance, Accounting, Treasury",800,Oracle,Michael Chen,Financial Management,Accounting,Commercial Off-The-Shelf,Worldwide,Global
 Supply Chain Manager,"Operations, Logistics, Procurement",1500,Internal,David Wilson,Supply Chain,Logistics,Custom Developed,"London, Paris, Frankfurt, Madrid",EMEA
-Marketing Analytics,Marketing,350,Adobe,Emily Brown,Customer Management,Digital Marketing,SaaS,Worldwide,Global
 Inventory Control System,"Warehouse, Operations",600,Internal,Robert Lee,Supply Chain,Inventory Management,Custom Developed,"Tokyo, Seoul, Sydney",APAC
-Employee Training Platform,"Learning & Development, HR",5000,Cornerstone,Lisa Anderson,Employee Management,Training,SaaS,Worldwide,Global
 Procurement Portal,Purchasing,250,Internal,James Wong,Supply Chain,Procurement,Custom Developed,"Dubai, Riyadh, Istanbul",EMEA
-Customer Support Hub,"Customer Service, Sales Operations",1800,Zendesk,Maria Garcia,Customer Management,Support Operations,Commercial Off-The-Shelf,Worldwide,Global
-Project Management Suite,"PMO, All Departments",3000,Atlassian,Tom Baker,Project Management,Portfolio Management,SaaS,Worldwide,Global
 Asset Management System,"Facilities, Operations, Maintenance",400,Internal,Chris Taylor,Asset Management,Maintenance,Custom Developed,"Singapore, Hong Kong, Jakarta",APAC
 Business Intelligence Dashboard,"Analytics, Finance, Sales",2000,Tableau,Jennifer Park,Business Intelligence,Reporting,SaaS,Worldwide,Global
 Document Management System,All Departments,7500,Microsoft,Kevin O'Brien,Content Management,Document Storage,Commercial Off-The-Shelf,Worldwide,Global

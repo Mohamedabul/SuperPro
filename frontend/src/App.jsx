@@ -14,7 +14,8 @@ import {
   LinearProgress,
   CssBaseline,
   Tab,
-  Tabs
+  Tabs,
+  Tooltip
 } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
 import {
@@ -25,6 +26,7 @@ import {
   FileDownload as FileDownloadIcon
 } from '@mui/icons-material'
 import axios from 'axios'
+import ExcelJS from 'exceljs'
 
 function App() {
   const [file, setFile] = useState(null)
@@ -40,41 +42,112 @@ function App() {
     setFile(selectedFile)
     setError(null)
   }
-  const handleExport = () => {
-    const headers = analysis.columns
-    const rows = getGridRows()
-    
-    let csvContent = headers.join(',') + '\n'
-    
-    rows.forEach(row => {
-      const rowData = headers.map(column => {
-        const value = row[column] || ''
-        const isMissing = analysis.missing_positions[column].includes(row.id - 1)
-        const isTBD = analysis.tbd_positions[column].includes(row.id - 1)
-        const hasDelimiter = analysis.delimiter_analysis[column]?.includes(row.id - 1)
-        const hasLocationMismatch = column === 'Regional' && analysis.location_mismatches?.includes(row.id - 1)
-        const isDuplicate = analysis.duplicate_rows.indices.includes(row.id - 1)
+  const handleExport = async () => {
+    try {
+      console.log('Export started')
+      const headers = analysis.columns
+      const rows = getGridRows()
+      
+      const workbook = new ExcelJS.Workbook()
+      const worksheet = workbook.addWorksheet('Data Analysis')
+      
+      // Define columns with headers
+      worksheet.columns = headers.map(header => ({
+        header: header,
+        key: header,
+        width: 15
+      }))
+      
+      // Add data rows
+      rows.forEach((row, rowIndex) => {
+        const rowData = {}
+        headers.forEach(header => {
+          rowData[header] = row[header] ?? '' // Use nullish coalescing
+        })
+        worksheet.addRow(rowData)
         
-        let cellValue = value
-        if (hasLocationMismatch) cellValue = `[LM]${value}`
-        else if (hasDelimiter) cellValue = `[D]${value}`
-        else if (isTBD || isMissing) cellValue = `[M]${value}`
-        
-        return cellValue
-      }).join(',')
-      csvContent += rowData + '\n'
-    })
-  
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
-    const link = document.createElement('a')
-    const url = URL.createObjectURL(blob)
-    link.setAttribute('href', url)
-    link.setAttribute('download', 'data_export.csv')
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
-  
+        // Apply cell styling
+        headers.forEach((column, colIndex) => {
+          const cell = worksheet.getCell(rowIndex + 2, colIndex + 1)
+          const value = row[column]
+          const isMissing = analysis.missing_positions[column].includes(rowIndex)
+          const isTBD = analysis.tbd_positions[column].includes(rowIndex)
+          const hasDelimiter = analysis.delimiter_analysis[column]?.includes(rowIndex)
+          const hasRegionMismatch = column === analysis.regional_column && analysis.region_mismatches?.includes(rowIndex)
+          const isDuplicate = analysis.duplicate_rows.indices.includes(rowIndex)
+          const hasLocationMismatch = column === analysis.location_column && analysis.location_mismatch?.includes(rowIndex)
+          
+          // Add check for uppercase, excluding regional column and integers
+          const isUpperCase = column !== analysis.regional_column && 
+                             typeof value === 'string' && 
+                             value === value.toUpperCase() && 
+                             value.length > 1 && 
+                             isNaN(value)
+          
+          // Apply fill colors based on conditions
+          if (isDuplicate) {
+            cell.fill = {
+              type: 'pattern',
+              pattern: 'solid',
+              fgColor: { argb: 'FFFFE6FF' }  // Light pink for duplicates
+            }
+          } else if (hasRegionMismatch || hasLocationMismatch) {
+            cell.fill = {
+              type: 'pattern',
+              pattern: 'solid',
+              fgColor: { argb: 'FFFFE6E6' }  // Light red for mismatches
+            }
+          } else if (hasDelimiter) {
+            cell.fill = {
+              type: 'pattern',
+              pattern: 'solid',
+              fgColor: { argb: 'FFE6FFE6' }  // Light green for delimiters
+            }
+          } else if (isTBD || isMissing) {
+            cell.fill = {
+              type: 'pattern',
+              pattern: 'solid',
+              fgColor: { argb: 'FFFFE6CC' }  // Light orange for TBD/missing
+            }
+          } else if (isUpperCase) {
+            cell.fill = {
+              type: 'pattern',
+              pattern: 'solid',
+              fgColor: { argb: 'FFE6E6FF' }  // Light purple for uppercase
+            }
+          }
+        })
+      })
+      
+      // Make header row bold
+      worksheet.getRow(1).font = { bold: true }
+      
+      // Generate buffer and create download
+      const buffer = await workbook.xlsx.writeBuffer()
+      const blob = new Blob([buffer], { 
+        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' 
+      })
+      
+      // Create and trigger download
+      const url = window.URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = `data_analysis_${new Date().toISOString().split('T')[0]}.xlsx`
+      document.body.appendChild(link)
+      link.click()
+      
+      // Cleanup
+      setTimeout(() => {
+        document.body.removeChild(link)
+        window.URL.revokeObjectURL(url)
+      }, 0)
+      
+      console.log('Export completed')
+    } catch (error) {
+      console.error('Export failed:', error)
+      setError('Failed to export data. Please try again.')
+    }
+  }  
   
 
   const handleUpload = async () => {
@@ -113,15 +186,32 @@ function App() {
       maxWidth: 300,
       resizable: true,
       headerClassName: 'bold-header',
+
       renderCell: (params) => {
         const isMissing = analysis.missing_positions[column].includes(params.row.id - 1)
         const isTBD = analysis.tbd_positions[column].includes(params.row.id - 1)
         const isDuplicate = analysis.duplicate_rows.indices.includes(params.row.id - 1)
         const hasDelimiter = analysis.delimiter_analysis[column]?.includes(params.row.id - 1)
-        const hasLocationMismatch = column === 'Regional' && analysis.location_mismatches?.includes(params.row.id - 1)
+        const hasRegionMismatch = column === analysis.regional_column && analysis.region_mismatches?.includes(params.row.id - 1)
+        const hasLocationMismatch = column === analysis.location_column && analysis.location_mismatch?.includes(params.row.id - 1)
         const value = params.value || ' '
         
-        return (
+        // Add check for uppercase, excluding regional column
+        const isUpperCase = column !== analysis.regional_column && 
+                           typeof value === 'string' && 
+                           value === value.toUpperCase() && 
+                           value.length > 1 && isNaN(value)
+
+        let tooltipMessage = []
+        if (hasLocationMismatch) tooltipMessage.push("Loation Mismatch: Regional value doesn't match with location")
+        if (hasRegionMismatch) tooltipMessage.push("Region Mismatch: Location value doesn't match with region")
+        if (hasDelimiter) tooltipMessage.push("Delimiter Error: This delimiter is not allowed in this column")
+        if (isTBD) tooltipMessage.push("TBD Value: Cell contains a TBD or placeholder value")
+        if (isMissing) tooltipMessage.push("Missing Value: Cell contains missing")
+        if (isDuplicate) tooltipMessage.push("Duplicate Row: This row is a duplicate of another row in the dataset")
+        if (isUpperCase) tooltipMessage.push("Uppercase Warning: Cell contains all uppercase text")
+
+        const content = (
           <Box
             sx={{
               width: '100%',
@@ -129,18 +219,19 @@ function App() {
               display: 'flex',
               alignItems: 'flex-start',
               justifyContent: 'space-between',
-              // flexWrap: 'wrap',
               boxSizing: 'border-box',
               gap: 0,
-              backgroundColor: hasLocationMismatch
+              backgroundColor: hasRegionMismatch || hasLocationMismatch
                 ? 'rgba(255, 0, 0, 0.1)'   
                 : hasDelimiter
                   ? 'rgba(0, 128, 0, 0.1)'   
                   : isTBD 
                     ? 'rgba(255, 165, 0, 0.1)'  
                     : isMissing 
-                      ? 'rgba(255, 165, 0, 0.1)'  
-                      : 'transparent',
+                      ? 'rgba(255, 165, 0, 0.1)'
+                      : isUpperCase
+                        ? 'rgba(147, 112, 219, 0.1)'  // Light purple for uppercase
+                        : 'transparent',
               color: isTBD ? 'orange' : 'inherit',
               fontStyle: isTBD ? 'italic' : 'normal',
               p: 1,
@@ -153,6 +244,17 @@ function App() {
             {value}
           </Box>
         )
+        
+        return tooltipMessage.length > 0 ? (
+          <Tooltip 
+            title={tooltipMessage.join('\n')} 
+            arrow
+            placement="top"
+            sx={{ width: '100%', height: '100%' }}
+          >
+            {content}
+          </Tooltip>
+        ) : content
       }
     }))
   }
@@ -430,11 +532,11 @@ function App() {
                         <Box sx={{ mb: 2, display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                               <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(255, 0, 0, 0.1)' }} />
-                              <Typography variant="body2"><b>Location Mismatch</b></Typography>
+                              <Typography variant="body2"><b>Location / Regional Mismatch</b></Typography>
                             </Box>
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                               <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(0, 128, 0, 0.1)' }} />
-                              <Typography variant="body2"><b>Delimiter Found</b></Typography>
+                              <Typography variant="body2"><b>Delimiter Mismatch</b></Typography>
                             </Box>
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                               <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(255, 165, 0, 0.1)' }} />
@@ -444,7 +546,11 @@ function App() {
                               <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(255, 0, 255, 0.1)' }} />
                               <Typography variant="body2"><b>Duplicate Row</b></Typography>
                             </Box>
-                            {/* <Button
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                              <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(147, 112, 219, 0.1)' }} />
+                              <Typography variant="body2"><b>Uppercase Text</b></Typography>
+                            </Box>
+                            <Button
                               variant="contained"
                               color="primary"
                               onClick={handleExport}
@@ -452,7 +558,7 @@ function App() {
                               disabled={!analysis}
                             >
                               Export Data
-                            </Button> */}
+                            </Button>
                           </Box>
 
                         <DataGrid
