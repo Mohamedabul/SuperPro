@@ -101,7 +101,7 @@ function App() {
             cell.fill = {
               type: 'pattern',
               pattern: 'solid',
-              fgColor: { argb: 'FFE6FFE6' }  // Light green for delimiters
+              fgColor: { argb: 'FFFFE6E6' }  // Light red for mismatches
             }
           } else if (isTBD || isMissing) {
             cell.fill = {
@@ -113,7 +113,7 @@ function App() {
             cell.fill = {
               type: 'pattern',
               pattern: 'solid',
-              fgColor: { argb: 'FFE6E6FF' }  // Light purple for uppercase
+              fgColor: { argb: 'FFFFE6CC' }  // Light orange for TBD/missing
             }
           }
         })
@@ -194,22 +194,23 @@ function App() {
         const hasDelimiter = analysis.delimiter_analysis[column]?.includes(params.row.id - 1)
         const hasRegionMismatch = column === analysis.regional_column && analysis.region_mismatches?.includes(params.row.id - 1)
         const hasLocationMismatch = column === analysis.location_column && analysis.location_mismatch?.includes(params.row.id - 1)
-        const value = params.value || ' '
+        const value = params.value 
         
         // Add check for uppercase, excluding regional column
         const isUpperCase = column !== analysis.regional_column && 
-                           typeof value === 'string' && 
-                           value === value.toUpperCase() && 
-                           value.length > 1 && isNaN(value)
+                   typeof value === 'string' && 
+                   value === value.toUpperCase() && 
+                   value.length > 1 && 
+                   isNaN(value)
 
         let tooltipMessage = []
-        if (hasLocationMismatch) tooltipMessage.push("Loation Mismatch: Regional value doesn't match with location")
-        if (hasRegionMismatch) tooltipMessage.push("Region Mismatch: Location value doesn't match with region")
-        if (hasDelimiter) tooltipMessage.push("Delimiter Error: This delimiter is not allowed in this column")
-        if (isTBD) tooltipMessage.push("TBD Value: Cell contains a TBD or placeholder value")
-        if (isMissing) tooltipMessage.push("Missing Value: Cell contains missing")
-        if (isDuplicate) tooltipMessage.push("Duplicate Row: This row is a duplicate of another row in the dataset")
-        if (isUpperCase) tooltipMessage.push("Uppercase Warning: Cell contains all uppercase text")
+        if (hasLocationMismatch) tooltipMessage.push("Loation Mismatch: Regional value doesn't match with location.")
+        if (hasRegionMismatch) tooltipMessage.push("Region Mismatch: Location value doesn't match with region.")
+        if (hasDelimiter) tooltipMessage.push("Delimiter Error: This delimiter is not allowed in this column.")
+        if (isTBD) tooltipMessage.push("TBD Value: Cell contains a TBD or placeholder value.")
+        if (isMissing) tooltipMessage.push("Missing Value: Cell contains missing.")
+        if (isDuplicate) tooltipMessage.push("Duplicate Row: This row is a duplicate of another row in the dataset.")
+        if (isUpperCase) tooltipMessage.push("Uppercase Warning: Cell contains all uppercase text.")
 
         const content = (
           <Box
@@ -224,13 +225,13 @@ function App() {
               backgroundColor: hasRegionMismatch || hasLocationMismatch
                 ? 'rgba(255, 0, 0, 0.1)'   
                 : hasDelimiter
-                  ? 'rgba(0, 128, 0, 0.1)'   
+                  ? 'rgba(255, 0, 0, 0.1)'   
                   : isTBD 
                     ? 'rgba(255, 165, 0, 0.1)'  
                     : isMissing 
                       ? 'rgba(255, 165, 0, 0.1)'
                       : isUpperCase
-                        ? 'rgba(147, 112, 219, 0.1)'  // Light purple for uppercase
+                        ? 'rgba(255, 165, 0, 0.1)'  // Light purple for uppercase
                         : 'transparent',
               color: isTBD ? 'orange' : 'inherit',
               fontStyle: isTBD ? 'italic' : 'normal',
@@ -532,24 +533,24 @@ function App() {
                         <Box sx={{ mb: 2, display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                               <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(255, 0, 0, 0.1)' }} />
-                              <Typography variant="body2"><b>Location / Regional Mismatch</b></Typography>
+                              <Typography variant="body2"><b>Location / Regional Mismatch /Delimiter</b></Typography>
                             </Box>
-                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                            {/* <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                               <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(0, 128, 0, 0.1)' }} />
                               <Typography variant="body2"><b>Delimiter Mismatch</b></Typography>
-                            </Box>
+                            </Box> */}
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                               <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(255, 165, 0, 0.1)' }} />
-                              <Typography variant="body2"><b>Missing/TBD Value</b></Typography>
+                              <Typography variant="body2"><b>Missing/TBD Value/UpperCase Text</b></Typography>
                             </Box>
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                               <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(255, 0, 255, 0.1)' }} />
                               <Typography variant="body2"><b>Duplicate Row</b></Typography>
                             </Box>
-                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                            {/* <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                               <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(147, 112, 219, 0.1)' }} />
                               <Typography variant="body2"><b>Uppercase Text</b></Typography>
-                            </Box>
+                            </Box> */}
                             <Button
                               variant="contained"
                               color="primary"
