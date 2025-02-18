@@ -1,0 +1,396 @@
+Application,Capability,Domain,subdomain,Status,business_owner,software_owner,it_owner,hosting,criticality,interfaces,number_of_users,software_support_partner,transition,stages,description,start_date,end_date,country,region,updated_at,created_at
+SAP India,Production,-,-,Migrate,-,SAP,Rachit Buschan,AWS,High,Multiple,120,SAP,SAP Calderys,-,-,-,-,India,APAC,6/12/2024,29/11/2024
+Brevo (Sendinblue),Marketing and Sales,Marketing and Sales Development,Develop M&S Messages,Strategic,-,-,-,-,-,-,-,-,-,-,-,-,-,Worldwide,Global,22/01/2025,22/01/2025
+PDM QAD's,Product and Service Development,Quality Management,-,Replace,Frederic Arama,-,Josh Stauffer,Local,Low,TBD,-,-,TBD,-,-,-,-,Americas,Global,9/12/2024,3/12/2024
+Oracle CRM,Customer Relationship,Customer Management,Manage Customer Hierarchy,Strategic,-,Oracle,Josh Stauffer,SaaS,High,Multiple,200,Oracle,As-Is,-,-,-,-,Americas,AMERICAS,6/12/2024,6/12/2024
+SAP India,Marketing and Sales,-,-,Migrate,-,SAP,Rachit Buschan,AWS,High,Multiple,120,SAP,SAP Calderys,-,-,-,-,India,APAC,6/12/2024,29/11/2024
+Salesforce,Customer Relationship,Contact Management,Inbound Contact,Strategic,Frederic Arama,SalesForce,-,SaaS,High,TBD,650,SalesForce,As-Is,-,-,-,-,empty,EMEA,16/12/2024,6/12/2024
+Predictive Solutions,Production,Environment Health & Safety,-,Retired,-,-,-,TBD,Low,TBD,-,-,SAI360,-,-,-,-,Worldwide,EMEA,9/12/2024,29/11/2024
+Logotiger,Finance,-,-,Migrate,"Hakan Akkoyunlu (Accounting manager)
+
+Ozan Ta?tan
+(Finance manager)",Logo solution company (LBS) / logo yaz?l?m.,Beata Liptsey,Local,High,Avasoft via Uyumsoft,"Logo Tiger: 21
+Bordro plus: 3
+Avasoft: 39","Alternatif
+
+Logo solution company (LBS)",SAP Calderys,-,-,-,-,Turkey,EMEA,12/12/2024,29/11/2024
+Lascom Aptean PDM,Product and Service Development,-,-,Migrate,Nicolas Duvauchelle,"Aptean
+Lascom",-,TBD,High,SAP Calderys,283,Lascom,Dassault,-,-,-,-,empty,EMEA,3/12/2024,3/12/2024
+Cisco ISE,Enterprise Support,Enterprise Risk Management,Manage Security,Strategic,Cyril Arnould,Cisco,Cyril Arnould,SaaS,High,N/A,-,"NTT
+Oussama",As-Is,-,-,-,-,Worldwide,Global,29/11/2024,29/11/2024
+Oracle Fusion,Finance,-,-,Strategic,-,Oracle,Nate Warren,SaaS,High,Multiple,1650,Oracle,As-Is,-,-,-,-,Americas,AMERICAS,9/12/2024,29/11/2024
+SAP Metallurgy,Procurement and Logistics,-,-,Migrate,-,SAP,Beata Liptsey,AWS,High,Multiple,250,SAP,SAP Calderys,-,-,-,-,US,AMERICAS,6/12/2024,6/12/2024
+Okta,Enterprise Support,Enterprise Risk Management,Manage Security,Strategic,Cyril Arnould,Okta,-,TBD,High,N/A,-,Lyvoc,As-Is,-,-,-,-,Worldwide,Global,29/11/2024,29/11/2024
+Concur EMEA/APAC,Finance,Settlements and Payments,Travel and Expense Management,Strategic,"Nick Redman (SSC)
+Emilie Dehors (Purchase)
+Jean-Pierre Lacroute (HR)",Concur,Edit Fábián,AWS,High,"SAP Caldreys
+SAP Metallurgy",1200,Concur,As-Is,-,-,-,-,Worldwide,Global,29/11/2024,29/11/2024
+Mfg App Tools,Production,Machine Management,Optimize Machine,Tactical,-,HWI IT,Rob Wolken,Local,High,TBD,-,HWI IT,TBD,-,-,-,-,Americas,AMERICAS,9/12/2024,29/11/2024
+SAP India,Procurement and Logistics,-,-,Migrate,-,SAP,Rachit Buschan,AWS,High,Multiple,120,SAP,SAP Calderys,-,-,-,-,India,APAC,6/12/2024,29/11/2024
+Quimeo,Enterprise Support,Enterprise Effectiveness and Project Manageme,Manage Programs,Tactical,Frederic Arama,Quimeo,-,SaaS,Medium,TBD,65,-,TBD,-,-,-,-,Worldwide,Global,3/12/2024,3/12/2024
+Galileo,Production,Machine Management,Operate Machine,Strategic,Adriaan Van der Schriek,Syntact automation,"Daniel Kloetzsch
+Volker Hein",AWS,High,SAP Calderys,150,Syntact automation,As-Is,-,-,-,-,empty,EMEA,9/12/2024,29/11/2024
+Power BI,Enterprise Support,Information Management,Define Reports and KPI's,Strategic,-,Microsoft,-,TBD,High,Oracle ADW,-,-,As-Is,-,-,-,-,Worldwide,Global,6/12/2024,29/11/2024
+Red-On-line Capex Tool,Production,Environment Health & Safety,-,Retired,Frederic Arama,Red-on-line,-,SaaS,Medium,TBD,65,Red-on-line,TBD,-,-,-,-,Worldwide,Global,6/12/2024,29/11/2024
+Qlikview,Enterprise Support,Information Management,Define Reports and KPI's,Replace,Frédéric Mascle,Qliktech France ,-,SaaS,High,TBD,107,Qliktech France ,Power BI,-,-,-,-,Worldwide,EMEA,3/12/2024,29/11/2024
+DMI SAP Archive,Enterprise Support,IT Management,Technology Management,Tactical,-,-,-,-,-,-,-,-,-,-,-,-,-,France,EMEA,17/01/2025,17/01/2025
+OP Manager,Enterprise Support,Enterprise Risk Management,Manage Security,Strategic,Cyril Arnould,ManageEngine,Cyril Arnould,SaaS,High,N/A,-,-,As-Is,-,-,-,-,Worldwide,Global,3/12/2024,29/11/2024
+SAP BW Metallurgy,Enterprise Support,Information Management,Illustrate Data,Strategic,Frédéric Mascle,SAP,"Olivier Bastard
+Léonard Cousin
+Mohamed Tahiri",AWS,High,Multiple,-,SAP,Power BI,-,-,-,-,US,AMERICAS,6/12/2024,6/12/2024
+Intelligence2day,Product and Service Development,Marketing Testing,Analyse customer Intelligence,Tactical,-,Cominitelli,-,TBD,Medium,TBD,-,-,TBD,-,-,-,-,empty,TBD,9/12/2024,3/12/2024
+Qualys Via,Enterprise Support,Enterprise Risk Management,Manage Compliance,Tactical,"Andras Balogh
+Mathieu Lai",Qualys,"Andras Balogh
+Mathieu Lai",SaaS,High,N/A,-,-,TBD,-,-,-,-,Worldwide,Global,3/12/2024,3/12/2024
+Vantage,Enterprise Support,Enterprise Effectiveness and Project Manageme,Manage Programs,Strategic,Frederic Arama,Vantage,Hui Huan,TBD,Medium,N/A,238,-,As-Is,-,-,-,-,Worldwide,Global,29/11/2024,29/11/2024
+SAP Metallurgy,Marketing and Sales,-,-,Migrate,-,SAP,Beata Liptsey,AWS,High,Multiple,250,SAP,SAP Calderys,-,-,-,-,US,EMEA,6/12/2024,29/11/2024
+Sage Accpac,Production,-,-,Tactical,"Kayla Wang
+Fuzhi Zhang",Sage,Beata Liptsey,AWS,High,Banklink Calderys China,50 in China,Best FPW?,SAP Calderys,-,-,-,-,China,APAC,9/12/2024,6/12/2024
+Orbit VMI,Procurement and Logistics,Logistics Management,-,Tactical,-,Orbit,Stefan Klecha,SaaS,High,SAP Metallurgy,20,"Transporeon
+Trimble
+Pasapas
+Talan",TBD,-,-,-,-,Germany,EMEA,9/12/2024,29/11/2024
+Adamentes,Enterprise Support,Human Resource Management,Manage Payroll,Tactical,-,-,-,Local,High,TBD,-,-,As-Is,-,-,-,-,Hungary,EMEA,6/12/2024,3/12/2024
+Finario,Finance,-,-,Retired,-,SalesForce,-,SaaS,High,N/A,200,2Pace,TBD,-,-,-,-,Worldwide,Global,3/12/2024,3/12/2024
+Creo 3D Simulation,Product and Service Development,Research & Development,Manage Innovation,Strategic,-,-,-,-,-,-,-,-,-,-,-,-,-,Worldwide,Global,19/01/2025,19/01/2025
+QM TDS,Product and Service Development,Quality Management,-,Tactical,-,-,-,TBD,Medium,SAP Metallurgy,-,-,TBD,-,-,-,-,empty,EMEA,9/12/2024,29/11/2024
+Beyond Trust,Enterprise Support,Enterprise Risk Management,Manage Security,Strategic,"Andras Balogh
+Mathieu Lai",-,-,SaaS,High,N/A,-,-,As-Is,-,-,-,-,Worldwide,Global,29/11/2024,29/11/2024
+Serrala,Finance,Treasury,Cash Management,Strategic,"Nick Redman (SSC)
+Treasury team
+Marco Erbacci",Serrala,"Ikram Idoudi
+Tarik Haije
+Beata Liptsey",TBD,High,"SAP Calderys
+SAP Metallurgy",54,Serrala,TBD,-,-,-,-,empty,Global,6/12/2024,5/12/2024
+EPP Check Print,Enterprise Support,IT Management,Technology Management,Tactical,-,-,-,TBD,Medium,N/A,-,-,TBD,-,-,-,-,Americas,AMERICAS,9/12/2024,29/11/2024
+Magnitude,Finance,Financial Planning And Analysis,-,Migrate,-,Insight Software,-,TBD,High,TBD,-,-,Oracle EPM,-,-,-,-,Germany,EMEA,9/12/2024,29/11/2024
+"Autostore
+Kofax",Product and Service Development,Engineering,Design Products,Tactical,"Agneta Holmberg?
+Mattias Andersson?",Kofax,Beata Liptsey,Local,Medium,Printers (8-10),100,Netprint,TBD,-,-,-,-,Sweden,EMEA,6/12/2024,3/12/2024
+MSDGen,Product and Service Development,Requirements Definition,Manage Materials,Tactical,-,-,Joe Runyan,Local,Medium,Oracle Items,40,-,TBD,-,-,-,-,Americas,AMERICAS,9/12/2024,29/11/2024
+Oracle FCCS,Finance,Financial Planning And Analysis,-,Strategic,-,Oracle,Josh Stauffer,SaaS,High,Multiple,100,Oracle,As-Is,-,-,-,-,Worldwide,Global,9/12/2024,29/11/2024
+Vendavo,Marketing and Sales,Sales,Create Specific Offer,Strategic,-,-,-,-,-,-,-,-,-,-,-,-,-,empty,Global,16/12/2024,16/12/2024
+Lumapps,Enterprise Support,Knowledge and Research Management,Manage Knowledge,Retired,-,Lumpps,-,TBD,Medium,TBD,-,-,TBD,-,-,-,-,Worldwide,Global,17/01/2025,29/11/2024
+Proofpoint Email,Enterprise Support,Enterprise Risk Management,Manage Security,Strategic,"Andras Balogh
+Mathieu Lai",ProofPoint,"Andras Balogh
+Mathieu Lai",SaaS,High,N/A,-,"NTT
+Proofpoint",As-Is,-,-,-,-,Worldwide,Global,6/12/2024,29/11/2024
+DigiGst,Finance,Settlements and Payments,e-Invoice,Tactical,-,-,-,-,-,-,-,-,-,-,-,-,-,India,APAC,10/12/2024,10/12/2024
+Atlas,Procurement and Logistics,Logistics Management,Manage Transportation,Tactical,-,Atlas Logistics,-,TBD,High,SAP Metallurgy,-,-,As-Is,-,-,-,-,Germany,EMEA,3/12/2024,3/12/2024
+Oracle Data Request System,Enterprise Support,Information Management,-,Tactical,Tom Gencarelli,Oracle,Rob Wolken,Local,High,TBD,-,HWI IT,As-Is,-,-,-,-,Americas,AMERICAS,9/12/2024,29/11/2024
+Siemens WinnCC Other,Production,Machine Management,Operate Machine,Tactical,-,Siemens,-,TBD,High,SAP Metallurgy,-,-,As-Is,-,-,-,-,US,AMERICAS,9/12/2024,29/11/2024
+Sage Accpac,Marketing and Sales,-,-,Tactical,"Kayla Wang
+Fuzhi Zhang",Sage,Beata Liptsey,AWS,High,Banklink Calderys China,50 in China,Best FPW?,SAP Calderys,-,-,-,-,China,APAC,9/12/2024,6/12/2024
+QM Statistics,Product and Service Development,Quality Management,-,Tactical,-,-,-,TBD,Medium,SAP Metallurgy,-,-,TBD,-,-,-,-,empty,EMEA,9/12/2024,29/11/2024
+Sample Manager,Product and Service Development,Quality Management,-,Tactical,Diane Sachmann,ThermoFisher Scientific,Joe Runyan,Local,High,TBD,-,ThermoFisher Scientific,TBD,-,-,-,-,Americas,AMERICAS,6/12/2024,29/11/2024
+SafeMe,Production,Environment Health & Safety,-,Tactical,-,-,-,SaaS,Medium,TBD,-,-,-,-,-,-,-,Worldwide,EMEA,6/12/2024,29/11/2024
+"Dormakaba
+CSS",Enterprise Support,Human Resource Management,Time and Attendance,Tactical,"Andreas Girschik
+Marc Tell Walter
+Sandra Karst
+Kevin Neyses",Dormakaba,"Tarek Alterkaoui
+Ikram Idoudi",TBD,High,SAP Calderys ,200,-,As-Is,-,-,-,-,Germany,EMEA,29/11/2024,29/11/2024
+Galileo,Production,Machine Management,Optimize Machine,Strategic,Adriaan Van der Schriek,Syntact automation,"Daniel Kloetzsch
+Volker Hein",AWS,High,SAP Calderys,150,Syntact automation,As-Is,-,-,-,-,empty,EMEA,9/12/2024,29/11/2024
+Crystal Codes System,Enterprise Support,Information Management,Gather Data,Tactical,-,-,Olivier,-,Low,-,-,-,-,-,-,-,-,empty,EMEA,6/12/2024,29/11/2024
+Simutherm,Product and Service Development,Research & Development,Manage Innovation,Tactical,-,Simutherm,-,TBD,Medium,TBD,-,-,TBD,-,-,-,-,empty,TBD,6/12/2024,3/12/2024
+Dassault,Product and Service Development,Product Preparation,-,Strategic,-,Dassault,-,TBD,High,TBD,-,-,As-Is,-,-,-,-,Worldwide,Global,6/12/2024,6/12/2024
+CAD,Product and Service Development,Engineering,Design Products,Tactical,-,-,-,TBD,High,N/A,-,-,As-Is,-,-,-,-,empty,EMEA,9/12/2024,29/11/2024
+Elipse E3,Production,Machine Management,-,Tactical,-,Elipse Software,-,TBD,Medium,TBD,-,-,TBD,-,-,-,-,Brazil,AMERICAS,9/12/2024,29/11/2024
+Heat Transfer,Enterprise Support,-,-,Tactical,-,HWI IT,Rob Wolken,Local,Med,TBD,-,HWI IT,TBD,-,-,-,-,Americas,AMERICAS,9/12/2024,3/12/2024
+Proofpoint PSAT,Enterprise Support,Enterprise Risk Management,Manage Security,Strategic,"Andras Balogh
+Mathieu Lai",ProofPoint,"Andras Balogh
+Mathieu Lai",SaaS,High,N/A,-,"NTT
+Proofpoint",As-Is,-,-,-,-,Worldwide,Global,6/12/2024,3/12/2024
+Palo Alto Panorama,Enterprise Support,Enterprise Risk Management,Manage Security,Strategic,Cyril Arnould,Palo Alto,Cyril Arnould,SaaS,High,N/A,-,"NTT
+Oussama",As-Is,-,-,-,-,Worldwide,Global,9/12/2024,29/11/2024
+MES Oberhausen,Production,Machine Management,Operate Machine,Strategic,Frederic Arama,-,Stefan Klecha,Local,High,SAP Metallurgy,20,-,TBD,-,-,-,-,Germany,EMEA,9/12/2024,29/11/2024
+Logotiger,Procurement and Logistics,-,-,Migrate,"Hakan Akkoyunlu (Accounting manager)
+
+Ozan Ta?tan
+(Finance manager)",Logo solution company (LBS) / logo yaz?l?m.,Beata Liptsey,Local,High,Avasoft via Uyumsoft,"Logo Tiger: 21
+Bordro plus: 3
+Avasoft: 39","Alternatif
+
+Logo solution company (LBS)",SAP Calderys,-,-,-,-,Turkey,EMEA,6/12/2024,29/11/2024
+Aspel,Finance,-,-,Tactical,-,Aspel,-,TBD,High,TBD,-,-,Oracle Fusion,-,-,-,-,Mexico,AMERICAS,6/12/2024,29/11/2024
+Siemens WinnCC Other,Production,Machine Management,Operate Machine,Tactical,-,Siemens,-,TBD,High,SAP Metallurgy,-,-,As-Is,-,-,-,-,US,EMEA,9/12/2024,29/11/2024
+Customer Operations Data (Intensity at work),Customer Relationship,Contract Management,-,Tactical,-,-,-,Local,Medium,Oracle CRM,-,-,TBD,-,-,-,-,Americas,AMERICAS,9/12/2024,29/11/2024
+Oracle Analytics Cloud,Enterprise Support,Information Management,Process Data,Strategic,-,Oracle,-,TBD,High,Multiple,-,-,Power BI,-,-,-,-,Worldwide,Global,6/12/2024,6/12/2024
+SAP Document Reporting and Compliance (DRC),Finance,Settlements and Payments,e-Invoice,Strategic,-,-,-,-,-,-,-,-,-,-,-,-,-,Hungary,EMEA,21/01/2025,21/01/2025
+SAP Metallurgy,Finance,-,-,Migrate,-,SAP,Beata Liptsey,AWS,High,Multiple,250,SAP,SAP Calderys,-,-,-,-,US,EMEA,6/12/2024,29/11/2024
+"SDI
+Sistema di Interscambio",Finance,Settlements and Payments,e-Invoice,Tactical,"Marcello Lotti
+Marco Vincon",-,"Tarek Alterkaoui
+Ikram Idoudi",TBD,High,"SAP Calderys
+SAP Metallurgy",-,IT-Present,TBD,-,-,-,-,Italy,EMEA,10/12/2024,29/11/2024
+Inspire Planner,Enterprise Support,Enterprise Effectiveness and Project Manageme,Manage Programs,Tactical,-,-,-,SaaS,High,-,-,-,-,-,-,-,-,Worldwide,Global,29/11/2024,29/11/2024
+CAD,Product and Service Development,Research & Development,Manage Innovation,Tactical,-,-,-,TBD,High,N/A,-,-,As-Is,-,-,-,-,empty,EMEA,9/12/2024,6/12/2024
+Salesforce,Customer Relationship,Customer Management,Identify Customer,Strategic,Frederic Arama,SalesForce,-,SaaS,High,TBD,650,SalesForce,As-Is,-,-,-,-,empty,EMEA,6/12/2024,6/12/2024
+QM LIMS,Product and Service Development,Research & Development,Manage Research & Development Process,Tactical,-,-,-,TBD,Medium,SAP Metallurgy,-,-,TBD,-,-,-,-,empty,EMEA,9/12/2024,29/11/2024
+Cisco Meraki LAN,Enterprise Support,Enterprise Risk Management,Manage Security,Strategic,Cyril Arnould,Cisco,Cyril Arnould,SaaS,High,N/A,-,"NTT
+Oussama",As-Is,-,-,-,-,Worldwide,Global,29/11/2024,29/11/2024
+Oracle ADW,Enterprise Support,Information Management,-,Strategic,Olivier Bastard,Oracle,Olivier Bastard,SaaS,High,Talend,-,Oracle,As-Is,-,-,-,-,Worldwide,Global,9/12/2024,29/11/2024
+Enablon,Production,Environment Health & Safety,-,Retired,-,Enablon,-,SaaS,High,N/A,-,Volters Kulwer,SAI360,-,-,-,-,Worldwide,Global,6/12/2024,29/11/2024
+Office 365,Enterprise Support,Information Management,-,Strategic,Cyril Arnould,-,-,SaaS,High,TBD,-,-,As-Is,-,-,-,-,Worldwide,Global,9/12/2024,3/12/2024
+Softyflow,Enterprise Support,IT Management,Technology Management,Strategic,Frederic Arama,SoftyDev,-,AWS,High,"Workflow Interfaces :
+- CAPI > PDM FTP Server & SQL db
+- Vendor Management > BANKLINK db in SG DC
+- Expense Claims > Server DMZ 169 + 3 SQL db in SG DC
+
+Platform Interfaces :
+-OKTA (IAM)",450,SoftyDev,TBD,-,-,-,-,Worldwide,Global,6/12/2024,29/11/2024
+Siemens WinnCC Other,Production,Machine Management,Operate Machine,Tactical,-,Siemens,-,TBD,High,SAP Metallurgy,-,-,As-Is,-,-,-,-,Germany,AMERICAS,9/12/2024,29/11/2024
+TrustPair,Enterprise Support,Enterprise Risk Management,Manage Compliance,Tactical,-,-,-,SaaS,Low,N/A,-,-,-,-,-,-,-,Worldwide,Global,6/12/2024,3/12/2024
+Zuchetti,Finance,Treasury,Cash Management,Tactical,-,Zuchetti,-,TBD,Medium,TBD,-,-,TBD,-,-,-,-,Italy,EMEA,6/12/2024,3/12/2024
+Palo Alto Cortex,Enterprise Support,Enterprise Risk Management,Manage Security,Strategic,"Andras Balogh
+Mathieu Lai",Palo Alto,"Andras Balogh
+Mathieu Lai",SaaS,High,N/A,-,"NTT
+Oussama",As-Is,-,-,-,-,Worldwide,Global,9/12/2024,29/11/2024
+Windach,Production,Machine Management,-,Tactical,-,Windach,-,TBD,Medium,TBD,-,-,TBD,-,-,-,-,Germany,EMEA,9/12/2024,29/11/2024
+Dassault,Product and Service Development,Quality Management,-,Strategic,-,Dassault,-,TBD,High,TBD,-,-,As-Is,-,-,-,-,Worldwide,Global,6/12/2024,6/12/2024
+eCash Treasure,Finance,Treasury,Cash Management,Tactical,-,-,-,TBD,High,SAP Metallurgy,-,-,TBD,-,-,-,-,Germany,EMEA,3/12/2024,3/12/2024
+SAP Document Reporting and Compliance (DRC),Finance,Settlements and Payments,e-Invoice,Strategic,-,-,-,-,-,-,-,-,-,-,-,-,-,Italy,EMEA,21/01/2025,21/01/2025
+SAP Calderys,Finance,-,-,Strategic,-,SAP,Beata Liptsey,AWS,High,Multiple,600,SAP,SAP Calderys,-,-,-,-,Worldwide,Global,6/12/2024,3/12/2024
+Sage Accpac,Procurement and Logistics,-,-,Tactical,"Kayla Wang
+Fuzhi Zhang",Sage,Beata Liptsey,AWS,High,Banklink Calderys China,50 in China,Best FPW?,SAP Calderys,-,-,-,-,India,APAC,6/12/2024,6/12/2024
+QM LIMS,Product and Service Development,Quality Management,Manage Product Document,Tactical,-,-,-,TBD,Medium,SAP Metallurgy,-,-,TBD,-,-,-,-,empty,EMEA,9/12/2024,29/11/2024
+Kelio,Enterprise Support,Human Resource Management,Time and Attendance,Tactical,-,Kelio Ltd,-,TBD,Medium,TBD,-,-,TBD,-,-,-,-,France,EMEA,9/12/2024,29/11/2024
+Percipo,Enterprise Support,Human Resource Management,Learning and Development,Strategic,-,Skillsoft,-,TBD,Medium,TBD,-,-,As-Is,-,-,-,-,Worldwide,Global,29/11/2024,29/11/2024
+Works Trials,Product and Service Development,Quality Management,-,Tactical,-,HWI IT,Rob Wolken,Local,Med,TBD,-,HWI IT,TBD,-,-,-,-,Americas,AMERICAS,6/12/2024,3/12/2024
+FlowVision,Procurement and Logistics,Logistics Management,-,Tactical,Dave Elias,Flowvision,Rob Wolken,SaaS,High,TBD,-,Flowvision,TBD,-,-,-,-,Americas,AMERICAS,9/12/2024,3/12/2024
+Sunfish Payroll,Enterprise Support,Human Resource Management,Manage Payroll,Tactical,-,Sunfish,-,TBD,High,TBD,-,-,As-Is,-,-,-,-,Indonesia,APAC,29/11/2024,29/11/2024
+Accolade,Product and Service Development,Research & Development,Manage Research & Development Process,Retired,Bruno Touzo,Sopheon,-,SaaS,Medium,N/A,41,Sopheon,As-Is,-,-,-,-,Worldwide,Global,17/01/2025,29/11/2024
+AWS,Enterprise Support,IT Management,Technology Management,Strategic,Cyril Arnould,-,-,AWS,High,N/A,-,-,As-Is,-,-,-,-,Worldwide,Global,6/12/2024,3/12/2024
+Oracle Analytics Cloud,Enterprise Support,Information Management,Define Reports and KPI's,Strategic,-,Oracle,-,TBD,High,Multiple,-,-,Power BI,-,-,-,-,Worldwide,Global,9/12/2024,29/11/2024
+SAP BTP,Enterprise Support,IT Management,Technology Management,Strategic,-,SAP,Beata Liptsey,TBD,High,Multiple,-,SAP,Cloud Integrator,-,-,-,-,empty,EMEA,9/12/2024,29/11/2024
+Arvixar,Finance,Settlements and Payments,e-Invoice,Tactical,Marcello Lotti,ARXivar,Marion Fernau-Wirz,AWS,Medium,SAP Calderys,-,IT-Present,TBD,-,-,-,-,Italy,EMEA,10/12/2024,29/11/2024
+SAP BW Metallurgy,Enterprise Support,Information Management,Process Data,Strategic,Frédéric Mascle,SAP,"Olivier Bastard
+Léonard Cousin
+Mohamed Tahiri",AWS,High,Multiple,-,SAP,Power BI,-,-,-,-,Brazil,AMERICAS,6/12/2024,6/12/2024
+SAP Metallurgy,Procurement and Logistics,-,-,Migrate,-,SAP,Beata Liptsey,AWS,High,Multiple,250,SAP,SAP Calderys,-,-,-,-,Brazil,AMERICAS,6/12/2024,6/12/2024
+Customer Operations Data (Intensity at work),Product and Service Development,Requirements Definition,Manage Materials,Tactical,-,-,-,Local,Medium,Oracle CRM,-,-,TBD,-,-,-,-,Americas,AMERICAS,9/12/2024,6/12/2024
+Bitlocker,Enterprise Support,Enterprise Risk Management,Manage Security,Strategic,"Andras Balogh
+Mathieu Lai",Microsoft,"Andras Balogh
+Mathieu Lai",SaaS,High,TBD,-,-,As-Is,-,-,-,-,Worldwide,Global,29/11/2024,29/11/2024
+Magnitude Archive,Enterprise Support,IT Management,Technology Management,Tactical,-,-,-,-,-,-,-,-,-,-,-,-,-,Germany,EMEA,17/01/2025,17/01/2025
+Galileo,Production,Machine Management,Manage Machine Information,Strategic,Adriaan Van der Schriek,Syntact automation,"Daniel Kloetzsch
+Volker Hein",AWS,High,SAP Calderys,150,Syntact automation,As-Is,-,-,-,-,empty,EMEA,9/12/2024,29/11/2024
+Navision,Finance,Settlements and Payments,e-Invoice,Tactical,Mária Boriné Nagy,-,Marion Fernau-Wirz,Local,High,SAP Calderys,-,-,As-Is,-,-,-,-,Hungary,EMEA,10/12/2024,3/12/2024
+SAP BW Calderys,Enterprise Support,Information Management,Define Reports and KPI's,Strategic,Frédéric Mascle,SAP,"Olivier Bastard
+Léonard Cousin
+Mohamed Tahiri",AWS,High,Multiple,-,SAP,Power BI,-,-,-,-,Worldwide,Global,6/12/2024,6/12/2024
+Elster German Tax Portal,Finance,Tax Management,Handle Trading,Tactical,-,Elster,-,TBD,High,TBD,-,-,TBD,-,-,-,-,Germany,EMEA,29/11/2024,29/11/2024
+SAP Calderys,Marketing and Sales,-,-,Strategic,-,SAP,Beata Liptsey,AWS,High,Multiple,600,SAP,SAP Calderys,-,-,-,-,Worldwide,Global,6/12/2024,6/12/2024
+SAP Metallurgy,Procurement and Logistics,-,-,Migrate,-,SAP,Beata Liptsey,AWS,High,Multiple,250,SAP,SAP Calderys,-,-,-,-,Brazil,EMEA,6/12/2024,6/12/2024
+Sage Accpac,Finance,-,-,Tactical,"Kayla Wang
+Fuzhi Zhang",Sage,Beata Liptsey,AWS,High,Banklink Calderys China,50 in China,Best FPW?,SAP Calderys,-,-,-,-,China,APAC,9/12/2024,6/12/2024
+Transporeon,Procurement and Logistics,Logistics Management,Manage Transportation,Strategic,Gabriela Rixecker,Transporeon,Marion Fernau-Wirz,SaaS,High,SAP Calderys,20,"Transporeon
+Trimble
+Pasapas
+Talan",TBD,-,-,-,-,Germany,EMEA,6/12/2024,29/11/2024
+Citiray,Enterprise Support,Human Resource Management,Manage Payroll,Tactical,-,Citiray Technology,-,TBD,High,TBD,-,-,As-Is,-,-,-,-,China,APAC,6/12/2024,29/11/2024
+Oracle Fusion,Procurement and Logistics,-,-,Strategic,-,Oracle,Nate Warren,SaaS,High,Multiple,1650,Oracle,As-Is,-,-,-,-,Americas,AMERICAS,6/12/2024,6/12/2024
+Talend,Enterprise Support,Information Management,Govern Data,Replace,Frédéric Mascle,Talend,-,SaaS,High,"SAP BW
+PDM",-,Keyrus,Power BI,-,-,-,-,Worldwide,Global,3/12/2024,29/11/2024
+Checkaud,Enterprise Support,Enterprise Risk Management,Manage Compliance,Replace,-,IBS Schreiber GmbH,Robert Laschalt,Local,High,"SAP Calderys
+SAP Metallurgy",1,IT-Present,As-Is,-,-,-,-,Worldwide,Global,6/12/2024,29/11/2024
+Oracle CRM,Customer Relationship,Contact Management,Outbound Contact,Strategic,-,Oracle,Josh Stauffer,SaaS,High,Multiple,200,Oracle,As-Is,-,-,-,-,Americas,AMERICAS,6/12/2024,6/12/2024
+Prisma Access,Enterprise Support,Enterprise Risk Management,Manage Security,Strategic,Cyril Arnould,Palo Alto,Cyril Arnould,SaaS,High,N/A,-,"NTT
+Oussama",TBD,-,-,-,-,Worldwide,Global,6/12/2024,3/12/2024
+DataAssist,Enterprise Support,Human Resource Management,Manage Payroll,Tactical,-,DataAssist,-,TBD,High,Logo Tiger,-,-,As-Is,-,-,-,-,Turkey,EMEA,6/12/2024,29/11/2024
+Siemens WinnCC Other,Production,Machine Management,Operate Machine,Tactical,-,Siemens,-,TBD,High,SAP Metallurgy,-,-,As-Is,-,-,-,-,Germany,EMEA,9/12/2024,29/11/2024
+Global Protect,Enterprise Support,Enterprise Risk Management,Manage Security,Strategic,"Andras Balogh
+Mathieu Lai",Palo Alto,"Andras Balogh
+Mathieu Lai",SaaS,High,N/A,-,"Oussama
+Palo Alto",As-Is,-,-,-,-,Worldwide,Global,29/11/2024,29/11/2024
+Powell Software (Intranet),Enterprise Support,Human Resource Management,HR Polices and processes,Strategic,-,-,-,-,-,-,-,-,-,-,-,-,-,Worldwide,Global,21/01/2025,21/01/2025
+Oracle CRM,Customer Relationship,Customer Management,Manage Customer,Strategic,-,Oracle,Josh Stauffer,SaaS,High,Multiple,200,Oracle,As-Is,-,-,-,-,Americas,AMERICAS,6/12/2024,6/12/2024
+SAP BW Metallurgy,Enterprise Support,Information Management,Process Data,Strategic,Frédéric Mascle,SAP,"Olivier Bastard
+Léonard Cousin
+Mohamed Tahiri",AWS,High,Multiple,-,SAP,Power BI,-,-,-,-,Germany,EMEA,6/12/2024,6/12/2024
+SAP BW Metallurgy,Enterprise Support,Information Management,Define Reports and KPI's,Strategic,Frédéric Mascle,SAP,"Olivier Bastard
+Léonard Cousin
+Mohamed Tahiri",AWS,High,Multiple,-,SAP,Power BI,-,-,-,-,Brazil,AMERICAS,6/12/2024,29/11/2024
+SAP Metallurgy,Procurement and Logistics,-,-,Migrate,-,SAP,Beata Liptsey,AWS,High,Multiple,250,SAP,SAP Calderys,-,-,-,-,Germany,AMERICAS,6/12/2024,6/12/2024
+Concur Americas,Finance,Settlements and Payments,Travel and Expense Management,Strategic,-,Concur,Josh Stauffer,SaaS,High,Oracle Fusion,-,Concur,As-Is,-,-,-,-,Americas,Global,3/12/2024,3/12/2024
+QAD,Product and Service Development,Quality Management,-,Replace,-,QAD,-,TBD,High,TBD,-,-,Dassault,-,-,-,-,empty,TBD,9/12/2024,29/11/2024
+SAP BW Metallurgy,Enterprise Support,Information Management,Define Reports and KPI's,Strategic,Frédéric Mascle,SAP,"Olivier Bastard
+Léonard Cousin
+Mohamed Tahiri",AWS,High,Multiple,-,SAP,Power BI,-,-,-,-,US,AMERICAS,6/12/2024,29/11/2024
+SAP India,Finance,-,-,Migrate,-,SAP,Rachit Buschan,AWS,High,Multiple,120,SAP,SAP Calderys,-,-,-,-,India,APAC,6/12/2024,29/11/2024
+Servicenow CMDB,Enterprise Support,IT Management,IT Service Management,Strategic,Cyril Arnould,ServiceNow,-,SaaS,Medium,N/A,-,-,As-Is,-,-,-,-,Worldwide,Global,29/11/2024,29/11/2024
+Oracle CRM,Customer Relationship,Customer Management,Manage Community,Strategic,-,Oracle,Josh Stauffer,SaaS,High,Multiple,200,Oracle,As-Is,-,-,-,-,Americas,AMERICAS,9/12/2024,6/12/2024
+Oracle CRM,Customer Relationship,Contact Management,Contact Interaction,Strategic,-,Oracle,Josh Stauffer,SaaS,High,Multiple,200,Oracle,As-Is,-,-,-,-,Americas,AMERICAS,9/12/2024,29/11/2024
+AD Manager,Enterprise Support,Enterprise Risk Management,Manage Compliance,Strategic,Cyril Arnould,ManageEngine,Cyril Arnould,AWS,High,N/A,-,"Volker
+Infra",As-Is,-,-,-,-,Worldwide,Global,29/11/2024,29/11/2024
+Siemens WinnCC/VB,Production,Machine Management,Operate Machine,Strategic,-,Siemens,-,TBD,High,TBD,-,-,As-Is,-,-,-,-,Germany,EMEA,6/12/2024,3/12/2024
+Business Portal,Customer Relationship,Contract Management,Manage Contract,Tactical,"Jim Skelly
+Chris Kraft",HWI IT,Rob Wolken,Local,Med,TBD,-,HWI IT,As-Is,-,-,-,-,Americas,AMERICAS,9/12/2024,29/11/2024
+Netherlands Payroll,Enterprise Support,Human Resource Management,Manage Payroll,Tactical,Halbe Osinga,-,Marion Fernau-Wirz,TBD,High,SAP Calderys ,-,-,As-Is,-,-,-,-,Netherlands,EMEA,9/12/2024,5/12/2024
+Teamviewer,Enterprise Support,IT Management,IT Service Management,Strategic,Cyril Arnould,Teamviewer,Cyril Arnould,SaaS,High,TBD,-,-,As-Is,-,-,-,-,Worldwide,Global,3/12/2024,3/12/2024
+Truist Bank,Finance,Treasury,Cash Management,Tactical,-,Truist,-,TBD,High,TBD,-,-,TBD,-,-,-,-,Americas,AMERICAS,3/12/2024,29/11/2024
+Syntact,Production,Machine Management,-,Tactical,-,Syntact,-,TBD,High,TBD, ,-,TBD,-,-,-,-,empty,TBD,9/12/2024,29/11/2024
+Oracle HRIS,Enterprise Support,Human Resource Management,HRIS,Strategic,-,Oracle,Josh Stauffer,SaaS,High,Multiple,4600,Oracle,As-Is,-,-,-,-,Worldwide,Global,9/12/2024,29/11/2024
+Salesforce,Customer Relationship,Contact Management,Classify Demand,Strategic,Frederic Arama,SalesForce,-,SaaS,High,TBD,650,SalesForce,As-Is,-,-,-,-,empty,EMEA,6/12/2024,29/11/2024
+Oracle Fusion,Marketing and Sales,-,-,Strategic,-,Oracle,Nate Warren,SaaS,High,Multiple,1650,Oracle,As-Is,-,-,-,-,Americas,AMERICAS,6/12/2024,6/12/2024
+Unicredit,Finance,Treasury,Cash Management,Tactical,-,Unicredit,-,TBD,High,SAP Metallurgy,-, ,TBD,-,-,-,-,Germany,EMEA,3/12/2024,3/12/2024
+Customer Complaint System,Customer Relationship,Customer Management,Manage Customer,Tactical,Diane Sachmann,HWI IT,Rob Wolken,Local,High,TBD,-,HWI IT,TBD,-,-,-,-,Americas,AMERICAS,29/11/2024,29/11/2024
+Sage Accpac,Production,-,-,Tactical,"Kayla Wang
+Fuzhi Zhang",Sage,Beata Liptsey,AWS,High,Banklink Calderys China,50 in China,Best FPW?,SAP Calderys,-,-,-,-,India,APAC,9/12/2024,6/12/2024
+Caldnet,Customer Relationship,Order Management,-,Replace,-,Calderys,-,Local,Medium,SAP India,-,-,Salesforce,-,-,-,-,India,APAC,17/01/2025,3/12/2024
+Oracle CRM,Customer Relationship,Customer Management,Identify Customer,Strategic,-,Oracle,Josh Stauffer,SaaS,High,Multiple,200,Oracle,As-Is,-,-,-,-,Americas,AMERICAS,6/12/2024,6/12/2024
+Dingxin,Enterprise Support,Human Resource Management,Manage Payroll,Tactical,-,Dingxin,-,TBD,High,TBD,-,-,As-Is,-,-,-,-,Taiwan,APAC,29/11/2024,29/11/2024
+SAP BW Metallurgy,Enterprise Support,Information Management,Process Data,Strategic,Frédéric Mascle,SAP,"Olivier Bastard
+Léonard Cousin
+Mohamed Tahiri",AWS,High,Multiple,-,SAP,Power BI,-,-,-,-,US,AMERICAS,6/12/2024,6/12/2024
+Inventory Locator Tool (Mattware),Procurement and Logistics,Logistics Management,-,Tactical,John Rosenecker,HWI IT,Rob Wolken,Local,High,TBD,-,HWI IT,TBD,-,-,-,-,Americas,AMERICAS,9/12/2024,29/11/2024
+QM LIMS,Product and Service Development,Research & Development,Manage Innovation,Tactical,-,-,-,TBD,Medium,SAP Metallurgy,-,-,TBD,-,-,-,-,empty,EMEA,9/12/2024,29/11/2024
+DR Software Chemges,Product and Service Development,Requirements Definition,Manage Materials,Tactical,-,-,-,-,-,-,-,-,-,-,-,-,-,empty,EMEA,9/12/2024,9/12/2024
+QM LIMS,Product and Service Development,Research & Development,Manage Innovation,Tactical,-,-,-,TBD,Medium,SAP Metallurgy,-,-,TBD,-,-,-,-,empty,EMEA,9/12/2024,29/11/2024
+Citrix,Enterprise Support,Enterprise Risk Management,Manage Security,Strategic,Cyril Arnould,Citrix,Cyril Arnould,SaaS,High,N/A,-,Volker,As-Is,-,-,-,-,Worldwide,Global,3/12/2024,29/11/2024
+Beo Sanctions,Enterprise Support,Enterprise Risk Management,Manage Compliance,Tactical,-,BEO,-,TBD,Medium,TBD,-,-,As-Is,-,-,-,-,Germany,EMEA,3/12/2024,3/12/2024
+Office 365,Enterprise Support,IT Management,-,Strategic,Cyril Arnould,-,-,SaaS,High,TBD,-,-,As-Is,-,-,-,-,Worldwide,Global,9/12/2024,3/12/2024
+Benefix,Enterprise Support,Human Resource Management,Manage Talent,Tactical,Steve Hertzer,Benefix,Josh Stauffer,SaaS,High,TBD,-,Benefix,As-Is,-,-,-,-,Americas,AMERICAS,9/12/2024,3/12/2024
+SAP BW Metallurgy,Enterprise Support,Information Management,Illustrate Data,Strategic,Frédéric Mascle,SAP,"Olivier Bastard
+Léonard Cousin
+Mohamed Tahiri",AWS,High,Multiple,-,SAP,Power BI,-,-,-,-,Germany,EMEA,6/12/2024,6/12/2024
+Ignition Sepasoft,Production,Machine Management,Operate Machine,Tactical,Jason West,Sepasoft,-,TBD,High,TBD,-,-,TBD,-,-,-,-,Americas,AMERICAS,9/12/2024,29/11/2024
+Fix 32,Production,Machine Management,-,Tactical,-,Fultek,-,TBD,Medium,TBD,-,-,TBD,-,-,-,-,Brazil,AMERICAS,9/12/2024,29/11/2024
+QM LIMS,Product and Service Development,Research & Development,Manage Research & Development Process,Tactical,-,-,-,TBD,Medium,SAP Metallurgy,-,-,TBD,-,-,-,-,empty,EMEA,9/12/2024,29/11/2024
+Dassault,Product and Service Development,Product and Service Delivery,-,Strategic,-,Dassault,-,TBD,High,TBD,-,-,As-Is,-,-,-,-,Worldwide,Global,6/12/2024,3/12/2024
+Hereus,Product and Service Development,Marketing Testing,Analyse customer Intelligence,Migrate,Jens Brune,Heraeus,-,AWS,High,N/A,20,Heraeus,Dassault,-,-,-,-,Italy,EMEA,9/12/2024,29/11/2024
+Hereus,Product and Service Development,Marketing Testing,Analyse customer Intelligence,Migrate,Jens Brune,Heraeus,-,AWS,High,N/A,20,Heraeus,Dassault,-,-,-,-,France,EMEA,9/12/2024,29/11/2024
+Logotiger,Marketing and Sales,-,-,Migrate,"Hakan Akkoyunlu (Accounting manager)
+
+Ozan Ta?tan
+(Finance manager)",Logo solution company (LBS) / logo yaz?l?m.,Beata Liptsey,Local,High,Avasoft via Uyumsoft,"Logo Tiger: 21
+Bordro plus: 3
+Avasoft: 39","Alternatif
+
+Logo solution company (LBS)",SAP Calderys,-,-,-,-,Turkey,EMEA,12/12/2024,29/11/2024
+BNP,Finance,Treasury,Cash Management,Strategic,-,BNP,-,TBD,High,SAP India,-,-,As-Is,-,-,-,-,India,APAC,29/11/2024,29/11/2024
+DBH Advantage Customs,Procurement and Logistics,Logistics Management,Manage Transportation,Tactical,Andre Köhler,DBH,"Marion Fernau-Wirz
+Robert Laschalt",TBD,High,"SAP Calderys
+SAP Metallurgy",-,IT-Present,As-Is,-,-,-,-,Germany,EMEA,3/12/2024,3/12/2024
+Orbit VMI,Procurement and Logistics,Logistics Management,-,Tactical,-,Orbit,Stefan Klecha,SaaS,High,SAP Metallurgy,20,"Transporeon
+Trimble
+Pasapas
+Talan",TBD,-,-,-,-,Italy,EMEA,9/12/2024,29/11/2024
+Fisher Oracle,Product and Service Development,Product and Service Delivery,-,Tactical,-,Oracle,-,TBD,High,TBD,-,-,TBD,-,-,-,-,Americas,AMERICAS,9/12/2024,29/11/2024
+Avalar Avatax,Finance,Tax Management,Tax Determination,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+One2Team,Enterprise Support,Enterprise Effectiveness and Project Manageme,Manage Programs,Retired,Bruno Touzo,Sciforma,Dietmar May,SaaS,Medium,N/A,-,Sciforma,Vantage,-,-,-,-,Worldwide,Global,29/11/2024,29/11/2024
+Salesforce,Customer Relationship,Customer Management,Manage Customer Hierarchy,Strategic,Frederic Arama,SalesForce,-,SaaS,High,TBD,650,SalesForce,As-Is,-,-,-,-,empty,EMEA,6/12/2024,6/12/2024
+Finland Payroll,Enterprise Support,Human Resource Management,Manage Payroll,Tactical,Mari Heinelo,-,"Gabor Kovacs
+Tarek Alterkaoui",TBD,High,SAP Calderys ,-,-,As-Is,-,-,-,-,Finland,EMEA,9/12/2024,3/12/2024
+Oracle Analytics Cloud,Enterprise Support,Information Management,Gather Data,Migrate,-,Oracle,-,TBD,High,Multiple,-,-,Power BI,-,-,-,-,Worldwide,Global,6/12/2024,29/11/2024
+Oracle Analytics Cloud,Enterprise Support,Information Management,Govern Data,Strategic,-,Oracle,-,TBD,High,Multiple,-,-,Power BI,-,-,-,-,Worldwide,Global,6/12/2024,6/12/2024
+SAP BW Calderys,Enterprise Support,Information Management,Process Data,Strategic,Frédéric Mascle,SAP,"Olivier Bastard
+Léonard Cousin
+Mohamed Tahiri",AWS,High,Multiple,-,SAP,Power BI,-,-,-,-,Worldwide,Global,6/12/2024,6/12/2024
+Logotiger,Production,-,-,Migrate,"Hakan Akkoyunlu (Accounting manager)
+
+Ozan Ta?tan
+(Finance manager)",Logo solution company (LBS) / logo yaz?l?m.,Beata Liptsey,Local,High,Avasoft via Uyumsoft,"Logo Tiger: 21
+Bordro plus: 3
+Avasoft: 39","Alternatif
+
+Logo solution company (LBS)",SAP Calderys,-,-,-,-,Turkey,EMEA,6/12/2024,6/12/2024
+SAP Calderys,Procurement and Logistics,-,-,Strategic,-,SAP,Beata Liptsey,AWS,High,Multiple,600,SAP,SAP Calderys,-,-,-,-,Worldwide,Global,6/12/2024,6/12/2024
+Exalog,Finance,Treasury,Cash Management,Tactical,-,"Exalog, a Cegid Company",-,TBD,High,"SAP Calderys
+SAP Metallurgy
+Serrala",-,-,TBD,-,-,-,-,empty,EMEA,3/12/2024,29/11/2024
+SAP Metallurgy,Production,-,-,Migrate,-,SAP,Beata Liptsey,AWS,High,Multiple,250,SAP,SAP Calderys,-,-,-,-,US,EMEA,6/12/2024,6/12/2024
+Databricks ,Enterprise Support,Information Management,Process Data,Strategic,-,-,-,-,-,-,-,-,-,-,-,-,-,Worldwide,Global,17/01/2025,17/01/2025
+Microsiga - Protheus,Finance,-,-,Tactical,-,Totvs,Beata Liptsey,SaaS,High,TBD,20,Totvs,Oracle Fusion,-,-,-,-,Brazil,AMERICAS,9/12/2024,29/11/2024
+Cadfem Ansys,Product and Service Development,Research & Development,Manage Innovation,Tactical,-,Cadfem,-,TBD,Medium,N/A,-,-,As-Is,-,-,-,-,France,EMEA,9/12/2024,3/12/2024
+Salesforce,Customer Relationship,Contact Management,Contact Interaction,Strategic,Frederic Arama,SalesForce,-,SaaS,High,TBD,650,SalesForce,As-Is,-,-,-,-,empty,EMEA,6/12/2024,6/12/2024
+Anaplan,Finance,Financial Planning And Analysis,-,Tactical,-,Anaplan,-,TBD,Medium,TBD,-,-,As-Is,-,-,-,-,empty,EMEA,9/12/2024,29/11/2024
+Galileo,Production,Production Order Management,Plan Production Orders,Strategic,Adriaan Van der Schriek,Syntact automation,"Daniel Kloetzsch
+Volker Hein",AWS,High,SAP Calderys,150,Syntact automation,As-Is,-,-,-,-,empty,EMEA,9/12/2024,9/12/2024
+Filegate (Italy),Finance,-,-,Tactical,-,-,-,TBD,Medium,SAP Metallurgy, ,-,TBD,-,-,-,-,Italy,EMEA,17/01/2025,29/11/2024
+Basware,Finance,Settlements and Payments,Account Payables,Strategic,"Nick Redman
+Rebecca Fernandez",Basware,"Ikram Idoudi
+Beata Liptsey",SaaS,High,"SAP Calderys
+SAP Metallurgy",1000,"Fluxym
+Pasapas",Enhance,-,-,-,-,empty,EMEA,29/11/2024,29/11/2024
+Banklink,Finance,Treasury,Cash Management,Tactical,-,Banklink,Beata Liptsey,Local,High,SAGE AccPac,2,Stone Forest (SP),As-Is,-,-,-,-,China,APAC,29/11/2024,29/11/2024
+eGeko (CSS),Enterprise Support,Human Resource Management,Manage Payroll,Tactical,-,-,-,-,-,-,-,-,-,-,-,-,-,Germany,EMEA,21/01/2025,21/01/2025
+Orbit Logistics,Procurement and Logistics,Logistics Management,-,Tactical,-,Orbit,Stefan Klecha,SaaS,High,SAP Metallurgy,20,Orbit,TBD,-,-,-,-,Germany,EMEA,9/12/2024,3/12/2024
+Piranti,Enterprise Support,Human Resource Management,Time and Attendance,Tactical,-,-,-,TBD,Medium,TBD,-,-,TBD,-,-,-,-,Taiwan,APAC,9/12/2024,3/12/2024
+DMI SAP Archive,Enterprise Support,IT Management,Technology Management,Tactical,-,-,-,-,-,-,-,-,-,-,-,-,-,Germany,EMEA,17/01/2025,17/01/2025
+QM LIMS,Product and Service Development,Quality Management,Test Initial Quality,Tactical,-,-,-,TBD,Medium,SAP Metallurgy,-,-,TBD,-,-,-,-,empty,EMEA,9/12/2024,29/11/2024
+F2A,Enterprise Support,Human Resource Management,Manage Payroll,Tactical,Marcello Lotti,F2A,"Tarek Alterkaoui
+Ikram Idoudi",TBD,High,"SAP Calderys
+SAP Metallurgy",200,"F2A Biz
+Eng
+Talan
+Pasapas",As-Is,-,-,-,-,Italy,EMEA,9/12/2024,3/12/2024
+Sage Accpac,Finance,-,-,Tactical,"Kayla Wang
+Fuzhi Zhang",Sage,Beata Liptsey,AWS,High,Banklink Calderys China,50 in China,Best FPW?,SAP Calderys,-,-,-,-,India,APAC,9/12/2024,6/12/2024
+Salesforce,Customer Relationship,Contact Management,Outbound Contact,Strategic,Frederic Arama,SalesForce,-,SaaS,High,TBD,650,SalesForce,As-Is,-,-,-,-,empty,EMEA,6/12/2024,6/12/2024
+Secova,Production,Environment Health & Safety,-,Retired,Frederic Arama,SC,-,TBD,Low,N/A,-,-,TBD,-,-,-,-,Worldwide,Global,9/12/2024,29/11/2024
+ADP Payroll,Enterprise Support,Human Resource Management,Manage Payroll,Tactical,"Bruno Zmyslony
+Cécile Babonneau
+Agnes Rouire
+Christelle Forest
+Eugenie Koffi",ADP,"Ikram Idoudi
+Tarik Haije",Local,High,SAP Metallurgy,200,-,As-Is,-,-,-,-,France,EMEA,6/12/2024,29/11/2024
+Galileo,Procurement and Logistics,Warehouse Management,Manage Inventory,Strategic,Adriaan Van der Schriek,Syntact automation,"Daniel Kloetzsch
+Volker Hein",AWS,High,SAP Calderys,150,Syntact automation,As-Is,-,-,-,-,empty,EMEA,9/12/2024,9/12/2024
+SAI360,Production,Environment Health & Safety,-,Strategic,Frederic Arama,SAI360,-,SaaS,High,N/A,-,-,As-Is,-,-,-,-,Worldwide,Global,6/12/2024,3/12/2024
+SAP BW Calderys,Enterprise Support,Information Management,Illustrate Data,Strategic,Frédéric Mascle,SAP,"Olivier Bastard
+Léonard Cousin
+Mohamed Tahiri",AWS,High,Multiple,-,SAP,Power BI,-,-,-,-,Worldwide,Global,6/12/2024,6/12/2024
+Lascom Aptean PDM,Product and Service Development,-,-,Migrate,Nicolas Duvauchelle,"Aptean
+Lascom",-,TBD,High,SAP Calderys,283,Lascom,Dassault,-,-,-,-,empty,APAC,3/12/2024,3/12/2024
+QM Lab Talk,Product and Service Development,Quality Management,-,Tactical,-,-,-,TBD,Medium,SAP Metallurgy,-,-,TBD,-,-,-,-,empty,EMEA,9/12/2024,3/12/2024
+Sage Accpac,Procurement and Logistics,-,-,Tactical,"Kayla Wang
+Fuzhi Zhang",Sage,Beata Liptsey,AWS,High,Banklink Calderys China,50 in China,Best FPW?,SAP Calderys,-,-,-,-,China,APAC,9/12/2024,6/12/2024
+Minitab,Product and Service Development,Quality Management,Manage Product Document,Tactical,-,Minitab, ,TBD,Low,TBD,-,-,TBD,-,-,-,-,empty,TBD,9/12/2024,3/12/2024
+Minitab,Product and Service Development,Quality Management,Test Initial Quality,Tactical,-,Minitab, ,TBD,Low,TBD,-,-,TBD,-,-,-,-,empty,TBD,9/12/2024,3/12/2024
+Factsage,Product and Service Development,Research & Development,Manage Innovation,Tactical,Frederic Arama,GTT-Technologies GmbH,-,Local,High,N/A,15,GTT-Technologies GmbH,TBD,-,-,-,-,India,APAC,9/12/2024,3/12/2024
+BEx Analyser,Enterprise Support,Information Management,Define Reports and KPI's,Migrate,-,SAP,-,Local,Medium,"SAP Calderys
+SAP India",-, ,Power BI,-,-,-,-,Worldwide,Global,29/11/2024,29/11/2024
+Oracle Fusion,Production,-,-,Strategic,-,Oracle,Nate Warren,SaaS,High,Multiple,1650,Oracle,As-Is,-,-,-,-,Americas,AMERICAS,6/12/2024,6/12/2024
+Oracle Transportation Management (OTM),Procurement and Logistics,Logistics Management,Manage Transportation,Strategic,John Rosenecker,Oracle,Josh Stauffer,SaaS,High,"Intellitrans Carrierpoint
+Oracle Fusion",-,Oracle,As-Is,-,-,-,-,Americas,AMERICAS,9/12/2024,3/12/2024
+MES Oberhausen,Production,Machine Management,Manage Machine Information,Strategic,Frederic Arama,-,Stefan Klecha,Local,High,SAP Metallurgy,20,-,TBD,-,-,-,-,Germany,EMEA,9/12/2024,29/11/2024
+Intellitrans (Carrierpoint),Procurement and Logistics,Logistics Management,Manage Transportation,Tactical,John Rosenecker,Intellitrans,Josh Stauffer,SaaS,High,Oracle Transportation Management,-,Intellitrans,TBD,-,-,-,-,Americas,AMERICAS,3/12/2024,29/11/2024
+Oracle CRM,Customer Relationship,Contact Management,Inbound Contact,Strategic,-,Oracle,Josh Stauffer,SaaS,High,Multiple,200,Oracle,As-Is,-,-,-,-,Americas,AMERICAS,6/12/2024,6/12/2024
+Customer Net (Quick FDS),Product and Service Development,Requirements Definition,Manage Materials,Tactical,Frederic Arama,Senzo,-,Internal SaaS,High,"Customer.net
+CAPI
+QuickFDS
+Cognos",-,Senzo,TBD,-,-,-,-,Worldwide,Global,9/12/2024,3/12/2024
+SAP Metallurgy,Procurement and Logistics,-,-,Migrate,-,SAP,Beata Liptsey,AWS,High,Multiple,250,SAP,SAP Calderys,-,-,-,-,Germany,EMEA,6/12/2024,6/12/2024
+SAP BW Metallurgy,Enterprise Support,Information Management,Define Reports and KPI's,Strategic,Frédéric Mascle,SAP,"Olivier Bastard
+Léonard Cousin
+Mohamed Tahiri",AWS,High,Multiple,-,SAP,Power BI,-,-,-,-,Germany,EMEA,6/12/2024,6/12/2024
+Minitab,Product and Service Development,Product and Service Delivery,Manage Product Traceability,Tactical,-,Minitab, ,TBD,Low,TBD,-,-,TBD,-,-,-,-,empty,TBD,9/12/2024,3/12/2024
+Tanium,Enterprise Support,Enterprise Risk Management,Manage Security,Strategic,Cyril Arnould,Tanium,-,TBD,Medium,TBD,2,-,TBD,-,-,-,-,empty,Global,6/12/2024,29/11/2024
+Ganter,Production,Environment Health & Safety,-,Tactical,-,-,-,TBD,Medium,TBD,-,-,TBD,-,-,-,-,Germany,EMEA,6/12/2024,3/12/2024
+Autocad 3d Simulation,Product and Service Development,Research & Development,Manage Innovation,Tactical,-,-,-,-,-,-,-,-,-,-,-,-,-,Worldwide,Global,17/01/2025,17/01/2025
+Oracle Analytics Cloud,Enterprise Support,Information Management,Illustrate Data,Strategic,-,Oracle,-,TBD,High,Multiple,-,-,Power BI,-,-,-,-,Worldwide,Global,6/12/2024,6/12/2024
+SAP Calderys,Production,-,-,Migrate,-,SAP,Beata Liptsey,AWS,High,Multiple,600,SAP,SAP Calderys,-,-,-,-,Worldwide,Global,12/12/2024,6/12/2024
+Ultipro Payroll,Enterprise Support,Human Resource Management,Manage Payroll,Tactical,Melissa Bihary,UKG,Josh Stauffer,SaaS,High,TBD,-,UKG,TBD,-,-,-,-,Americas,AMERICAS,3/12/2024,3/12/2024
+QM LIMS,Product and Service Development,Quality Management,Test Initial Quality,Tactical,-,-,-,TBD,Medium,SAP Metallurgy,-,-,TBD,-,-,-,-,empty,EMEA,9/12/2024,29/11/2024
+SAP BW Metallurgy,Enterprise Support,Information Management,Illustrate Data,Strategic,Frédéric Mascle,SAP,"Olivier Bastard
+Léonard Cousin
+Mohamed Tahiri",AWS,High,Multiple,-,SAP,Power BI,-,-,-,-,Brazil,AMERICAS,6/12/2024,6/12/2024
+Lime Pro (PLM Lime),Product and Service Development,Product and Service Delivery,-,Replace,-,Lime Technolgies,-,TBD,Medium,TBD,-,-,TBD,-,-,-,-,Sweden,EMEA,12/12/2024,29/11/2024
+Scada,Production,Machine Management,Operate Machine,Tactical,-,SCADA,-,TBD,High,TBD,-,-,As-Is,-,-,-,-,-,TBD,6/12/2024,29/11/2024
+Hereus,Product and Service Development,Marketing Testing,Analyse customer Intelligence,Migrate,Jens Brune,Heraeus,-,AWS,High,N/A,20,Heraeus,Dassault,-,-,-,-,Germany,EMEA,9/12/2024,29/11/2024
+ServiceNow,Enterprise Support,IT Management,Application Management,Strategic,Cyril Arnould,ServiceNow,-,SaaS,High,N/A,-,-,As-Is,-,-,-,-,Worldwide,Global,3/12/2024,3/12/2024
+SAGE DPW,Enterprise Support,Human Resource Management,Time and Attendance,Tactical,-,-,-,-,-,-,-,-,-,-,-,-,-,Austria,EMEA,11/12/2024,11/12/2024
+e Bilanz,Finance,Financial Planning And Analysis,-,Tactical,-,-,-,TBD,High,TBD,-,-,TBD,-,-,-,-,Germany,EMEA,9/12/2024,3/12/2024
+SAP Metallurgy,Procurement and Logistics,-,-,Migrate,-,SAP,Beata Liptsey,AWS,High,Multiple,250,SAP,SAP Calderys,-,-,-,-,US,EMEA,6/12/2024,6/12/2024
+Sage Accpac,Marketing and Sales,-,-,Tactical,"Kayla Wang
+Fuzhi Zhang",Sage,Beata Liptsey,AWS,High,Banklink Calderys China,50 in China,Best FPW?,SAP Calderys,-,-,-,-,India,APAC,9/12/2024,6/12/2024
+Siemens Design For Service,Product and Service Development,Product and Service Delivery,Manage Production,Tactical,-,-,-,-,-,-,-,-,-,-,-,-,-,Sweden,EMEA,11/12/2024,11/12/2024
+Galileo,Procurement and Logistics,Warehouse Management,Shipping,Strategic,Adriaan Van der Schriek,Syntact automation,"Daniel Kloetzsch
+Volker Hein",AWS,High,SAP Calderys,150,Syntact automation,As-Is,-,-,-,-,empty,EMEA,9/12/2024,9/12/2024
+Adobe Sign,Enterprise Support,Enterprise Risk Management,Manage Compliance,Strategic,-,-,-,-,-,-,-,-,-,-,-,-,-,Worldwide,Global,17/01/2025,17/01/2025
+Galileo,Procurement and Logistics,Warehouse Management,Goods Receipt and Service Entry,Strategic,Adriaan Van der Schriek,Syntact automation,"Daniel Kloetzsch
+Volker Hein",AWS,High,SAP Calderys,150,Syntact automation,As-Is,-,-,-,-,empty,EMEA,9/12/2024,9/12/2024
+DR Software Chemges,Product and Service Development,Requirements Definition,Manage Materials,Tactical,-,-,-,-,-,-,-,-,-,-,-,-,-,empty,APAC,9/12/2024,9/12/2024
+Salesforce,Customer Relationship,Customer Management,Manage Customer,Strategic,Frederic Arama,SalesForce,-,SaaS,High,TBD,650,SalesForce,As-Is,-,-,-,-,empty,EMEA,6/12/2024,6/12/2024

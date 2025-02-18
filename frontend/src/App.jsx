@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { 
-  Box, 
-  Button, 
-  Container, 
-  Paper, 
+import { PaginationProvider, usePagination } from './contexts/PaginationContext'
+import {
+  Box,
+  Button,
+  Container,
+  Paper,
   Typography,
   CircularProgress,
   Card,
@@ -16,7 +17,8 @@ import {
   Tab,
   Tabs,
   Tooltip
-} from '@mui/material'
+} 
+from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
 import {
   CloudUpload as CloudUploadIcon,
@@ -27,8 +29,8 @@ import {
 } from '@mui/icons-material'
 import axios from 'axios'
 import ExcelJS from 'exceljs'
-
-function App() {
+ 
+function AppContent() {
   const [file, setFile] = useState(null)
   const [loading, setLoading] = useState(false)
   const [analysis, setAnalysis] = useState(null)
@@ -36,54 +38,73 @@ function App() {
   const [activeTab, setActiveTab] = useState(0)
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+  const { page, setPage, rowsPerPage } = usePagination()
 
+
+ 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0]
     setFile(selectedFile)
     setError(null)
   }
+  const getPaginatedData = () => {
+    if (!analysis || !analysis.data) return [];
+    const startIndex = page * rowsPerPage;
+    const endIndex = startIndex + rowsPerPage;
+    return analysis.data
+      .slice(startIndex, endIndex)
+      .map((row, index) => ({
+        id: startIndex + index + 1,
+        ...row
+      }));
+  };
+
+
   const handleExport = async () => {
     try {
       console.log('Export started')
       const headers = analysis.columns
-      const rows = getGridRows()
-      
+      const rows = analysis.data
+     
       const workbook = new ExcelJS.Workbook()
       const worksheet = workbook.addWorksheet('Data Analysis')
-      
+     
       // Define columns with headers
       worksheet.columns = headers.map(header => ({
         header: header,
         key: header,
         width: 15
       }))
-      
+     
       // Add data rows
       rows.forEach((row, rowIndex) => {
         const rowData = {}
         headers.forEach(header => {
-          rowData[header] = row[header] ?? '' // Use nullish coalescing
+          rowData[header] = row[header] ?? ''
         })
         worksheet.addRow(rowData)
-        
+       
         // Apply cell styling
-        headers.forEach((column, colIndex) => {
+        headers.forEach((header, colIndex) => {
           const cell = worksheet.getCell(rowIndex + 2, colIndex + 1)
-          const value = row[column]
-          const isMissing = analysis.missing_positions[column].includes(rowIndex)
-          const isTBD = analysis.tbd_positions[column].includes(rowIndex)
-          const hasDelimiter = analysis.delimiter_analysis[column]?.includes(rowIndex)
-          const hasRegionMismatch = column === analysis.regional_column && analysis.region_mismatches?.includes(rowIndex)
+          const value = row[header]
+          const isMissing = analysis.missing_positions[header].includes(rowIndex)
+          const isTBD = analysis.tbd_positions[header].includes(rowIndex)
+          const hasDelimiter = analysis.delimiter_analysis[header]?.includes(rowIndex)
+          const hasRegionMismatch = header === analysis.regional_column && analysis.region_mismatches?.includes(rowIndex)
+          const hasLocationMismatch = header === analysis.location_column && analysis.location_mismatch?.includes(rowIndex)
           const isDuplicate = analysis.duplicate_rows.indices.includes(rowIndex)
-          const hasLocationMismatch = column === analysis.location_column && analysis.location_mismatch?.includes(rowIndex)
-          
+         
           // Add check for uppercase, excluding regional column and integers
-          const isUpperCase = column !== analysis.regional_column && 
-                             typeof value === 'string' && 
-                             value === value.toUpperCase() && 
-                             value.length > 1 && 
-                             isNaN(value)
-          
+          const isUpperCase = header !== analysis.regional_column && header !== analysis.location_column &&
+                   typeof value === 'string' &&
+                   value === value.toUpperCase() &&
+                   value.length > 1 &&
+                   isNaN(value) &&
+                   !value.match(/^\d{1,4}[-/\.]\d{1,2}[-/\.]\d{1,4}/) &&
+                   !value.match(/^(0?[1-9]|1[0-2])[\/\-](0?[1-9]|[12]\d|3[01])[\/\-](19|20)\d{2}$/) &&
+                   !value.match(/^(19|20)\d{2}[\/\-](0?[1-9]|1[0-2])[\/\-](0?[1-9]|[12]\d|3[01])$/)
+  
           // Apply fill colors based on conditions
           if (isDuplicate) {
             cell.fill = {
@@ -101,33 +122,27 @@ function App() {
             cell.fill = {
               type: 'pattern',
               pattern: 'solid',
-              fgColor: { argb: 'FFFFE6E6' }  // Light red for mismatches
+              fgColor: { argb: 'FFFFE6E6' }  // Light red for delimiter errors
             }
-          } else if (isTBD || isMissing) {
+          } else if (isTBD || isMissing || isUpperCase) {
             cell.fill = {
               type: 'pattern',
               pattern: 'solid',
-              fgColor: { argb: 'FFFFE6CC' }  // Light orange for TBD/missing
-            }
-          } else if (isUpperCase) {
-            cell.fill = {
-              type: 'pattern',
-              pattern: 'solid',
-              fgColor: { argb: 'FFFFE6CC' }  // Light orange for TBD/missing
+              fgColor: { argb: 'FFFFE6CC' }  // Light orange for TBD/missing/uppercase
             }
           }
         })
       })
-      
+     
       // Make header row bold
       worksheet.getRow(1).font = { bold: true }
-      
+     
       // Generate buffer and create download
       const buffer = await workbook.xlsx.writeBuffer()
-      const blob = new Blob([buffer], { 
-        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' 
+      const blob = new Blob([buffer], {
+        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
       })
-      
+     
       // Create and trigger download
       const url = window.URL.createObjectURL(blob)
       const link = document.createElement('a')
@@ -135,33 +150,33 @@ function App() {
       link.download = `data_analysis_${new Date().toISOString().split('T')[0]}.xlsx`
       document.body.appendChild(link)
       link.click()
-      
+     
       // Cleanup
       setTimeout(() => {
         document.body.removeChild(link)
         window.URL.revokeObjectURL(url)
       }, 0)
-      
+     
       console.log('Export completed')
     } catch (error) {
       console.error('Export failed:', error)
       setError('Failed to export data. Please try again.')
     }
-  }  
-  
-
+  } 
+ 
+ 
   const handleUpload = async () => {
     if (!file) {
       setError('Please select a file first')
       return
     }
-
+ 
     const formData = new FormData()
     formData.append('file', file)
-
+ 
     setLoading(true)
     setError(null)
-
+ 
     try {
       const response = await axios.post('http://localhost:5000/api/upload', formData, {
         headers: {
@@ -175,7 +190,7 @@ function App() {
       setLoading(false)
     }
   }
-
+ 
   const getGridColumns = () => {
     if (!analysis || !analysis.columns) return []
     return analysis.columns.map(column => ({
@@ -186,7 +201,7 @@ function App() {
       maxWidth: 300,
       resizable: true,
       headerClassName: 'bold-header',
-
+ 
       renderCell: (params) => {
         const isMissing = analysis.missing_positions[column].includes(params.row.id - 1)
         const isTBD = analysis.tbd_positions[column].includes(params.row.id - 1)
@@ -194,23 +209,64 @@ function App() {
         const hasDelimiter = analysis.delimiter_analysis[column]?.includes(params.row.id - 1)
         const hasRegionMismatch = column === analysis.regional_column && analysis.region_mismatches?.includes(params.row.id - 1)
         const hasLocationMismatch = column === analysis.location_column && analysis.location_mismatch?.includes(params.row.id - 1)
-        const value = params.value 
-        
+        const value = params.value
+       
         // Add check for uppercase, excluding regional column
-        const isUpperCase = column !== analysis.regional_column && 
-                   typeof value === 'string' && 
-                   value === value.toUpperCase() && 
-                   value.length > 1 && 
-                   isNaN(value)
+        const isUpperCase = column !== analysis.regional_column && column !== analysis.location_column &&
+                   typeof value === 'string' &&
+                   value === value.toUpperCase() &&
+                   value.length > 1 &&
+                   isNaN(value) &&
+                   !value.match(/^\d{1,4}[-/\.]\d{1,2}[-/\.]\d{1,4}/) &&
+                   !value.match(/^(0?[1-9]|1[0-2])[\/\-](0?[1-9]|[12]\d|3[01])[\/\-](19|20)\d{2}$/) &&
+                   !value.match(/^(19|20)\d{2}[\/\-](0?[1-9]|1[0-2])[\/\-](0?[1-9]|[12]\d|3[01])$/) && value !== 'EMEA' &&
+                   value !== 'APAC' &&
+                   value !== 'EMEA/APAC' &&
+                   value !== 'APAC/EMEA' &&
+                   value !== 'EMEA, APAC' &&
+                   value !== 'US' && value !== 'UK'
 
-        let tooltipMessage = []
-        if (hasLocationMismatch) tooltipMessage.push("Loation Mismatch: Regional value doesn't match with location.")
-        if (hasRegionMismatch) tooltipMessage.push("Region Mismatch: Location value doesn't match with region.")
-        if (hasDelimiter) tooltipMessage.push("Delimiter Error: This delimiter is not allowed in this column.")
-        if (isTBD) tooltipMessage.push("TBD Value: Cell contains a TBD or placeholder value.")
-        if (isMissing) tooltipMessage.push("Missing Value: Cell contains missing.")
-        if (isDuplicate) tooltipMessage.push("Duplicate Row: This row is a duplicate of another row in the dataset.")
-        if (isUpperCase) tooltipMessage.push("Uppercase Warning: Cell contains all uppercase text.")
+ 
+                   let tooltipMessage = [];
+                   const formatMessage = (message) => {
+                     const parts = message.split(": ");
+                     return parts.length > 1 ? (
+                       <span>
+                         <strong>{parts[0]}:</strong> {parts[1]}
+                       </span>
+                     ) : (
+                       message
+                     );
+                   };
+            
+                   if (hasLocationMismatch)
+                     tooltipMessage.push(
+                       formatMessage("Location Mismatch: Regional value doesn't match with location")
+                     );
+                   if (hasRegionMismatch)
+                     tooltipMessage.push(
+                       formatMessage("Region Mismatch: Location value doesn't match with region")
+                     );
+                   if (hasDelimiter)
+                     tooltipMessage.push(
+                       formatMessage("Delimiter Error: This delimiter is not allowed in this column")
+                     );
+                   if (isTBD)
+                     tooltipMessage.push(
+                       formatMessage("TBD Value: Cell contains a TBD or placeholder or '-' or NUll or None value")
+                     );
+                   if (isMissing)
+                     tooltipMessage.push(
+                       formatMessage("Missing Value: Cell contains missing")
+                     );
+                   if (isDuplicate)
+                     tooltipMessage.push(
+                       formatMessage("Duplicate Row: This row is a duplicate of another row in the dataset")
+                     );
+                   if (isUpperCase)
+                     tooltipMessage.push(
+                       formatMessage("Uppercase Warning: Cell contains all uppercase text")
+                     );
 
         const content = (
           <Box
@@ -223,12 +279,12 @@ function App() {
               boxSizing: 'border-box',
               gap: 0,
               backgroundColor: hasRegionMismatch || hasLocationMismatch
-                ? 'rgba(255, 0, 0, 0.1)'   
+                ? 'rgba(255, 0, 0, 0.1)'  
                 : hasDelimiter
-                  ? 'rgba(255, 0, 0, 0.1)'   
-                  : isTBD 
+                  ? 'rgba(255, 0, 0, 0.1)'  
+                  : isTBD
                     ? 'rgba(255, 165, 0, 0.1)'  
-                    : isMissing 
+                    : isMissing
                       ? 'rgba(255, 165, 0, 0.1)'
                       : isUpperCase
                         ? 'rgba(255, 165, 0, 0.1)'  // Light purple for uppercase
@@ -245,30 +301,42 @@ function App() {
             {value}
           </Box>
         )
-        
+       
         return tooltipMessage.length > 0 ? (
-          <Tooltip 
-            title={tooltipMessage.join('\n')} 
+          <Tooltip
+            title={
+              <div>
+                {tooltipMessage.map((msg, index) => (
+                  <div key={index}>{msg}</div>
+                ))}
+              </div>
+            }
             arrow
             placement="top"
             sx={{ width: '100%', height: '100%' }}
           >
             {content}
           </Tooltip>
-        ) : content
-      }
-    }))
-  }
-
-
-  const getGridRows = () => {
-    if (!analysis || !analysis.data) return []
-    return analysis.data.map((row, index) => ({
-      id: index + 1,
-      ...row
-    }))
-  }
-
+        ) : (
+          content
+        );
+      },
+    }));
+  };
+ 
+ 
+  // const getPaginatedData = () => {
+  //   if (!analysis || !analysis.data) return [];
+  //   const startIndex = page * rowsPerPage;
+  //   const endIndex = startIndex + rowsPerPage;
+  //   return analysis.data
+  //     .slice(startIndex, endIndex)
+  //     .map((row, index) => ({
+  //       id: startIndex + index + 1,
+  //       ...row
+  //     }));
+  // };
+ 
   return (
     <>
       <CssBaseline />
@@ -282,9 +350,9 @@ function App() {
           overflowX: 'hidden'
         }}
       >
-        <Container 
-          maxWidth={false} 
-          sx={{ 
+        <Container
+          maxWidth={false}
+          sx={{
             flex: 1,
             py: 4,
             px: { xs: 2, sm: 4, md: 6 }
@@ -293,7 +361,7 @@ function App() {
           <Grid container spacing={3}>
             {/* Header */}
             <Grid item xs={12}>
-              <Card 
+              <Card
                 elevation={3}
                 sx={{
                   background: `linear-gradient(45deg, ${theme.palette.primary.main} 30%, ${theme.palette.primary.dark} 90%)`,
@@ -311,15 +379,15 @@ function App() {
                 </CardContent>
               </Card>
             </Grid>
-
+ 
             {/* File Upload Section */}
             <Grid item xs={12}>
               <Card elevation={3}>
                 <CardContent sx={{ p: 3 }}>
-                  <Box sx={{ 
-                    display: 'flex', 
-                    flexDirection: isMobile ? 'column' : 'row', 
-                    alignItems: 'center', 
+                  <Box sx={{
+                    display: 'flex',
+                    flexDirection: isMobile ? 'column' : 'row',
+                    alignItems: 'center',
                     gap: 2,
                     width: '100%'
                   }}>
@@ -335,7 +403,7 @@ function App() {
                         variant="contained"
                         component="span"
                         startIcon={<CloudUploadIcon />}
-                        sx={{ 
+                        sx={{
                           minWidth: '200px',
                           bgcolor: theme.palette.primary.main,
                           '&:hover': {
@@ -347,8 +415,8 @@ function App() {
                       </Button>
                     </label>
                     {file && (
-                      <Typography sx={{ 
-                        flex: 1, 
+                      <Typography sx={{
+                        flex: 1,
                         textAlign: isMobile ? 'center' : 'left',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
@@ -372,7 +440,7 @@ function App() {
                 {loading && <LinearProgress />}
               </Card>
             </Grid>
-
+ 
             {/* Error Display */}
             {error && (
               <Grid item xs={12}>
@@ -385,26 +453,26 @@ function App() {
                 </Card>
               </Grid>
             )}
-
+ 
             {/* Analysis Results */}
             {analysis && (
               <>
                 <Grid item xs={12}>
                   <Card elevation={3}>
                     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                      <Tabs 
-                        value={activeTab} 
+                      <Tabs
+                        value={activeTab}
                         onChange={(e, newValue) => setActiveTab(newValue)}
                         variant="fullWidth"
                       >
-                        <Tab 
-                          icon={<AssessmentIcon />} 
-                          label="Analysis" 
+                        <Tab
+                          icon={<AssessmentIcon />}
+                          label="Analysis"
                           iconPosition="start"
                         />
-                        <Tab 
-                          icon={<GridOnIcon />} 
-                          label="Data Grid" 
+                        <Tab
+                          icon={<GridOnIcon />}
+                          label="Data Grid"
                           iconPosition="start"
                         />
                       </Tabs>
@@ -452,11 +520,11 @@ function App() {
                             </Card>
                           </Grid>
                         </Grid>
-
+ 
                         <Typography variant="h6" gutterBottom sx={{ mt: 4, mb: 2 }}>
                           Column Analysis
                         </Typography>
-                        
+                       
                         <Box sx={{ width: '100%', overflow: 'auto' }}>
                           <Grid container spacing={2}>
                             {analysis.columns.map((column) => (
@@ -477,16 +545,16 @@ function App() {
                                         Type: {analysis.data_types[column]}
                                       </Typography>
                                     </Box>
-                                    
+                                   
                                     <Box sx={{ mb: 2 }}>
                                       <Typography variant="body2" color="text.secondary" gutterBottom>
                                         Missing Values:
                                       </Typography>
                                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                        <LinearProgress 
-                                          variant="determinate" 
-                                          value={analysis.missing_percentage[column]} 
-                                          sx={{ 
+                                        <LinearProgress
+                                          variant="determinate"
+                                          value={analysis.missing_percentage[column]}
+                                          sx={{
                                             flexGrow: 1,
                                             backgroundColor: 'rgba(255, 0, 0, 0.1)',
                                             '& .MuiLinearProgress-bar': {
@@ -499,16 +567,16 @@ function App() {
                                         </Typography>
                                       </Box>
                                     </Box>
-                                    
+                                   
                                     <Box>
                                       <Typography variant="body2" color="text.secondary" gutterBottom>
                                         TBD Values:
                                       </Typography>
                                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                        <LinearProgress 
-                                          variant="determinate" 
-                                          value={analysis.tbd_percentage[column]} 
-                                          sx={{ 
+                                        <LinearProgress
+                                          variant="determinate"
+                                          value={analysis.tbd_percentage[column]}
+                                          sx={{
                                             flexGrow: 1,
                                             backgroundColor: 'rgba(255, 165, 0, 0.1)',
                                             '& .MuiLinearProgress-bar': {
@@ -561,14 +629,56 @@ function App() {
                               Export Data
                             </Button>
                           </Box>
-
+ 
                         <DataGrid
-                          rows={getGridRows()}
-                          columns={getGridColumns()}
-                          pageSize={10}
-                          rowsPerPageOptions={[10, 25, 50, 100]}
-                          disableSelectionOnClick
-                          density="comfortable"
+                            rows={getPaginatedData()}
+                            columns={getGridColumns()}
+                            pageSize={rowsPerPage}
+                            rowsPerPageOptions={[rowsPerPage]}
+                            pagination
+                            paginationMode="server"
+                            onPageChange={(newPage) => setPage(newPage)}
+                            page={page}
+                            rowCount={analysis?.data?.length || 0}
+                            loading={loading}
+                            disableSelectionOnClick
+                            density="comfortable"
+                            components={{
+                            Pagination: () => (
+                              <Box sx={{ 
+                                position: 'fixed',
+                                bottom: 20,
+                                left: '50%',
+                                transform: 'translateX(-50%)',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                backgroundColor: 'white',
+                                padding: '10px 20px',
+                                borderRadius: '8px',
+                                boxShadow: '0 2px 10px rgba(0,0,0,0.2)',
+                                zIndex: 9999
+                              }}>
+                              <Button 
+                                onClick={() => setPage(Math.max(0, page - 1))}
+                                disabled={page === 0}
+                                sx={{ mr: 2 }}
+                                variant="contained"
+                              >
+                                Previous
+                              </Button>
+                              <Typography sx={{ mx: 2, alignSelf: 'center' }}>
+                                Page {page + 1} of {Math.ceil((analysis?.data?.length || 0) / rowsPerPage)}
+                              </Typography>
+                              <Button 
+                                  onClick={() => setPage(page + 1)}
+                                  disabled={!analysis?.data || (page + 1) * rowsPerPage >= analysis.data.length}
+                                  variant="contained"
+                                >
+                                Next
+                              </Button>
+                              </Box>
+                            )
+                            }}
                           getRowClassName={(params) => {
                             const isDuplicate = analysis.duplicate_rows.indices.includes(params.row.id - 1)
                             return isDuplicate ? 'duplicate-row' : ''
@@ -584,8 +694,9 @@ function App() {
                               }
                             }
                           }}
-                          
+                         
                         />
+                        
                       </Box>
                     )}
                   </Card>
@@ -596,6 +707,14 @@ function App() {
         </Container>
       </Box>
     </>
+  )
+}
+ 
+function App() {
+  return (
+    <PaginationProvider>
+      <AppContent />
+    </PaginationProvider>
   )
 }
 
