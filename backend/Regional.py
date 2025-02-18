@@ -79,8 +79,8 @@ def check_region_location_mismatch(df, location_column, regional_column):
     **Only display the tables, no additional text.**
     """
 
-    df[location_column] = df[location_column].str.strip().str.upper()
-    df[regional_column] = df[regional_column].str.strip().str.upper()
+    df[location_column] = df[location_column].str.strip()
+    df[regional_column] = df[regional_column].str.strip()
 
     payload = {
         "messages": [

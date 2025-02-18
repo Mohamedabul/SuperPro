@@ -3,7 +3,10 @@ from flask_cors import CORS
 import pandas as pd
 import os
 from werkzeug.utils import secure_filename
-
+from delimiter import DelimiterAnalyzer
+from Regional import check_region_location_mismatch,extract_column_names1,analyze_columns_with_llm1
+from loc import check_location_mismatch,extract_column_names,analyze_columns_with_llm
+from manloc import mismatch_data
 
 app = Flask(__name__)
 CORS(app)
@@ -26,31 +29,47 @@ def analyze_file(file_path):
             df = pd.read_csv(file_path)
         else:
             df = pd.read_excel(file_path)
+        delimiter_analyzer = DelimiterAnalyzer()
+        delimiter_results = delimiter_analyzer.analyze_file(file_path)
+
+        # Add location mismatch analysis
         
+        llm_result1 = analyze_columns_with_llm1(df)
+        location_column1, regional_column1 = extract_column_names1(llm_result1)
+
+        region_mismatches = check_region_location_mismatch(df, location_column1, regional_column1)
+
+
+
+
+        llm_result = analyze_columns_with_llm(df)
+        location_column, regional_column = extract_column_names(llm_result)
+        location_mismatchs = check_location_mismatch(df, location_column, regional_column)
+       
         # Get missing value positions and TBD positions
         missing_positions = {}
         tbd_positions = {}
         duplicate_info = {}
-        
+       
         for column in df.columns:
             # Find missing values (NaN)
             missing_positions[column] = df[df[column].isna()].index.tolist()
-            
+           
             # Find TBD values (case insensitive)
-            tbd_mask = df[column].astype(str).str.upper().isin(['TBD', 'TO BE DETERMINED'])
+            tbd_mask = df[column].astype(str).str.upper().isin(['TBD', 'TO BE DETERMINED','-','', "None","Null"])
             tbd_positions[column] = df[tbd_mask].index.tolist()
-            
+           
             # Find duplicates in each column
             value_counts = df[column].value_counts()
             duplicates = value_counts[value_counts > 1]
             if not duplicates.empty:
                 duplicate_info[column] = {
-                    'count': len(duplicates),  # Number of unique values that are duplicated
-                    'total_occurrences': int(duplicates.sum()),  # Total number of duplicate occurrences
+                    'count': len(duplicates),  
+                    'total_occurrences': int(duplicates.sum()),  
                     'values': {
-                        str(value): int(count)  # Convert values to strings to handle all types
+                        str(value): int(count)  
                         for value, count in duplicates.items()
-                        if pd.notna(value)  # Exclude NaN values
+                        if pd.notna(value)  
                     }
                 }
             else:
@@ -64,14 +83,14 @@ def analyze_file(file_path):
         duplicate_rows = df.duplicated(keep=False)
         duplicate_row_indices = df[duplicate_rows].index.tolist()
         total_duplicate_rows = len(duplicate_row_indices)
-        
+       
         # Basic analysis
         analysis = {
             'total_rows': len(df),
             'total_columns': len(df.columns),
             'columns': list(df.columns),
             'missing_values': {
-                col: int(df[col].isna().sum()) 
+                col: int(df[col].isna().sum())
                 for col in df.columns
             },
             'tbd_values': {
@@ -79,7 +98,7 @@ def analyze_file(file_path):
                 for col in df.columns
             },
             'missing_percentage': {
-                col: float(df[col].isna().sum() / len(df) * 100) 
+                col: float(df[col].isna().sum() / len(df) * 100)
                 for col in df.columns
             },
             'tbd_percentage': {
@@ -87,7 +106,7 @@ def analyze_file(file_path):
                 for col in df.columns
             },
             'data_types': {
-                col: str(df[col].dtype) 
+                col: str(df[col].dtype)
                 for col in df.columns
             },
             'missing_positions': missing_positions,
@@ -98,8 +117,14 @@ def analyze_file(file_path):
                 'percentage': float(total_duplicate_rows / len(df) * 100),
                 'indices': duplicate_row_indices
             },
-            'data': df.fillna('').to_dict('records')
+            'data': df.fillna('').to_dict('records'),
+            'delimiter_analysis': delimiter_results,
+            'region_mismatches': region_mismatches,
+            'location_mismatch': location_mismatchs,
+            'location_column': location_column,
+            'regional_column': regional_column
         }
+        # print(analysis)
         return analysis, None
     except Exception as e:
         return None, str(e)
@@ -108,26 +133,27 @@ def analyze_file(file_path):
 def upload_file():
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'}), 400
-    
+   
     file = request.files['file']
     if file.filename == '':
         return jsonify({'error': 'No selected file'}), 400
-    
+   
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(filepath)
-        
+       
         analysis, error = analyze_file(filepath)
         if error:
             return jsonify({'error': error}), 500
-            
+           
         return jsonify({
             'message': 'File uploaded successfully',
             'analysis': analysis
         })
-    
+   
     return jsonify({'error': 'File type not allowed'}), 400
 
 if __name__ == '__main__':
     app.run(debug=True)
+ 

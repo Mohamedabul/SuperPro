@@ -9,7 +9,7 @@ Employee Training Platform,"Learning & Development, HR",5000,Cornerstone,Lisa An
 Procurement Portal,Purchasing,250,Internal,James Wong,Supply Chain,Procurement,Custom Developed,"Dubai, Riyadh, Istanbul",EMEA
 Customer Support Hub,"Customer Service, Sales Operations",1800,Zendesk,Maria Garcia,Customer Management,Support Operations,Commercial Off-The-Shelf,Worldwide,Global
 Project Management Suite,"PMO, All Departments",3000,Atlassian,Tom Baker,Project Management,Portfolio Management,SaaS,Worldwide,Global
-Asset Management System,"Facilities, Operations, Maintenance",400,Internal,Chris Taylor,Asset Management,Maintenance,Custom Developed,"Singapore, Hong Kong, Jakarta",APAC
+Asset Management System,Facilities/ Operations/ Maintenance,400,Internal,Chris Taylor,Asset Management,Maintenance,Custom Developed,"Singapore, Hong Kong, Jakarta",APAC
 Business Intelligence Dashboard,"Analytics, Finance, Sales",2000,Tableau,Jennifer Park,Business Intelligence,Reporting,SaaS,Worldwide,Global
 Document Management System,All Departments,7500,Microsoft,Kevin O'Brien,Content Management,Document Storage,Commercial Off-The-Shelf,Worldwide,Global
 Compliance Tracker,"Legal, Finance, Risk Management",900,Internal,Amanda Wu,Risk Management,Compliance,Custom Developed,"Amsterdam, Brussels, Copenhagen",EMEA
@@ -58,10 +58,10 @@ Log Management,IT SECURITY,750,Splunk,Adam Lee,Security,Logging,Commercial Off-T
 Translation Service,ALL DEPARTMENTS,1500,Internal,TBD,Content Management,Localization,Custom Developed,APAC/EMEA/US,Global
 Performance Testing,"QA, DEVELOPMENT",400,Internal,,Development,Testing,Custom Developed,"India, China",APAC/EMEA
 Email Marketing,"MARKETING, SALES",600,Mailchimp,Sarah Park,Marketing,Email,SaaS,EMEA/US,Global
-Capacity Planning,"IT OPS, INFRASTRUCTURE",TBD,Internal,David Chen,Infrastructure,Planning,Custom Developed,"Japan, Korea, UK",APAC
+Capacity Planning,IT OPS/ INFRASTRUCTURE,TBD,Internal,David Chen,Infrastructure,Planning,Custom Developed,"Japan, Korea, UK",APAC
 Storage Management,IT INFRASTRUCTURE,800,NetApp,,Infrastructure,Storage,Commercial Off-The-Shelf,WORLDWIDE,Global
 Voice System,"IT, COMMUNICATIONS",3500,Cisco,TBD,Communication,Telephony,Commercial Off-The-Shelf,France/Germany/India,EMEA
-Password Manager,"SECURITY, IT",5000,LastPass,,Security,Password Management,SaaS,worldwide,Global/EMEA
+Password Manager,SECURITY/ IT,5000,LastPass,,Security,Password Management,SaaS,worldwide,Global/EMEA
 Quality Management,"MANUFACTURING, QA",900,Internal,Michelle Lee,Manufacturing,Quality Control,Custom Developed,"China, Japan, Germany",APAC
 Reporting Tool,ALL DEPARTMENTS,2500,Power BI,TBD,Business Intelligence,Reporting,SaaS,EMEA/APAC,Global
 Ticketing System,"IT SUPPORT, HR",1800,ServiceNow,,Service Management,Ticketing,Commercial Off-The-Shelf,UK/France/Singapore,EMEA

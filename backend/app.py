@@ -6,7 +6,8 @@ from werkzeug.utils import secure_filename
 from delimiter import DelimiterAnalyzer
 from Regional import check_region_location_mismatch,extract_column_names1,analyze_columns_with_llm1
 from loc import check_location_mismatch,extract_column_names,analyze_columns_with_llm
-
+from manloc import mismatch_data
+from manreg import mismatched_index
 app = Flask(__name__)
 CORS(app)
 
@@ -36,15 +37,15 @@ def analyze_file(file_path):
         llm_result1 = analyze_columns_with_llm1(df)
         location_column1, regional_column1 = extract_column_names1(llm_result1)
 
-        region_mismatches = check_region_location_mismatch(df, location_column1, regional_column1)
-
+        # region_mismatches = check_region_location_mismatch(df, location_column1, regional_column1)
+        region_mismatches = mismatched_index(df, regional_column1)
 
 
 
         llm_result = analyze_columns_with_llm(df)
         location_column, regional_column = extract_column_names(llm_result)
-        location_mismatchs = check_location_mismatch(df, location_column, regional_column)
-       
+        # location_mismatchs = check_location_mismatch(df, location_column, regional_column)
+        location_mismatchs = mismatch_data(df,location_column,regional_column)
         # Get missing value positions and TBD positions
         missing_positions = {}
         tbd_positions = {}
@@ -55,7 +56,7 @@ def analyze_file(file_path):
             missing_positions[column] = df[df[column].isna()].index.tolist()
            
             # Find TBD values (case insensitive)
-            tbd_mask = df[column].astype(str).str.upper().isin(['TBD', 'TO BE DETERMINED'])
+            tbd_mask = df[column].astype(str).str.upper().isin(['TBD', 'TO BE DETERMINED','-','', "None","Null"])
             tbd_positions[column] = df[tbd_mask].index.tolist()
            
             # Find duplicates in each column
